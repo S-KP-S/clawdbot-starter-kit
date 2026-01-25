@@ -30,9 +30,31 @@ curl.exe -s -X POST "https://api.vapi.ai/call" `
 - **Tools:** Transfer call, End call, Google Calendar (check + create), Knowledge base query
 - **Transfer to:** +1 737-376-8046
 - **Booking hours:** 9 AM - 9 PM EST
-- **Knowledge Base File ID:** `96b30948-0122-4170-9c21-cb04307f13ca`
+- **Knowledge Base File IDs:** 
+  - `96b30948-0122-4170-9c21-cb04307f13ca` (main KB)
+  - `d9eb086e-c5b6-458d-989c-3b1002dc531b` (contacts.md)
 - **Query Tool ID:** `f67375f2-e8f0-4bea-8797-6cb6790575e3`
 - **Settings:** responseDelaySeconds=1, DTMF enabled, interruptionsEnabled=true
+
+### Date/Time Awareness (IMPORTANT)
+GPT-4o Mini hallucinates dates without help. Use Vapi's built-in dynamic variables:
+- `{{"now" | date: "%A, %B %d, %Y", "America/Chicago"}}` → "Saturday, January 25, 2026"
+- `{{"now" | date: "%I:%M %p", "America/Chicago"}}` → "1:40 PM"
+- `{{year}}` → "2026"
+- `{{customer.number}}` → caller's phone number
+Docs: https://docs.vapi.ai/assistants/dynamic-variables
+
+### Contacts (in Knowledge Base)
+To add/update contacts, edit `C:\Users\spenc\clawd\tmp\contacts.md` then re-upload:
+```powershell
+curl.exe -s -X POST "https://api.vapi.ai/file" -H "Authorization: Bearer be0f4153-6233-4fc8-94b8-8fe13a321dc2" -F "file=@C:\Users\spenc\clawd\tmp\contacts.md;type=text/markdown"
+```
+Then update the KB tool with the new file ID.
+
+**Current contacts:**
+| Phone | Name | Email |
+|-------|------|-------|
+| +14166066891 | Ahsan | baslamiyasan@gmail.com |
 
 ### Outbound Call Template
 ```json
