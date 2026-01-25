@@ -18,10 +18,11 @@ curl.exe -s -X POST "https://api.vapi.ai/call" `
   -d @C:\Users\spenc\clawd\tmp\vapi-call.json
 ```
 
-### Working Assistant Config (Clawd)
+### Clawd Assistant (Saved)
+- **Assistant ID:** `fe12654f-faed-43fc-b892-ba5efea3b454`
 - Model: `claude-sonnet-4-20250514` (Anthropic)
 - Voice: Spencer's custom ElevenLabs (`hmMWXCj9K7N5mCPcRkfC`)
-- Template: `C:\Users\spenc\clawd\tmp\vapi-call.json`
+- First message: "Hey Spencer! It's Clawd. What's up?"
 
 ## ElevenLabs TTS
 - **API Key:** sk_81ac05fe30f6719dab7d80380a3422284c43d7eb575fd597

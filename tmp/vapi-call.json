@@ -1,25 +1,7 @@
 {
   "phoneNumberId": "8a3a8ec3-6f30-42ed-9483-fdd209b3020f",
+  "assistantId": "fe12654f-faed-43fc-b892-ba5efea3b454",
   "customer": {
     "number": "+17373768046"
-  },
-  "assistant": {
-    "name": "Clawd",
-    "model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-4-20250514",
-      "messages": [
-        {
-          "role": "system",
-          "content": "You are Clawd, Spencer's AI assistant. This is a quick test call. Be friendly and brief. Spencer just wanted to verify the Vapi integration is working from your end."
-        }
-      ]
-    },
-    "voice": {
-      "provider": "11labs",
-      "voiceId": "hmMWXCj9K7N5mCPcRkfC",
-      "model": "eleven_turbo_v2"
-    },
-    "firstMessage": "Hey Spencer! Clawd here — just confirming the Vapi integration is live and I can call you directly now. Pretty cool, right?"
   }
 }
