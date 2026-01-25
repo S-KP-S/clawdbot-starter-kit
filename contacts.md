@@ -1,0 +1,451 @@
+﻿# Spencer's Contacts
+
+Parsed from VCF on 2026-01-25
+
+- **10k  From Atl**: `(770) 401-5686`
+- **188 King**: `+16479755735`
+- **411-Assistance**: `411`
+- **Aarij**: `+16479792745`
+- **Aftab Raza**: `+16472217189`
+- **Ahsan**: `+14166066891` | US: `+19179357414`
+- **Ain**: `+60 11-1544 8502`
+- **Airbnb**: `639278313249`
+- **Ajay**: `(647) 702-4123`
+- **Albanis Palma**: `+573242647995`
+- **Alberto Rivera**: `+573143826784`
+- **Alec MassÃ©**: `+12048919502`
+- **Alejandro Air bnb**: `+573005976352`
+- **Alex  Ferri**: `(613) 970-5548`
+- **Alex Equinox**: `+18064779168`
+- **Alex Koffler**: `+15055779665`
+- **Alex Laleva**: `+15198203347`
+- **Alex Nichols**: `+16474022602`
+- **Alex UK**: `+447389799425`
+- **Alexandra Diaz Colombia**: `+57 (315) 723-3701`
+- **Ali**: `+1 (647) 335-4105`
+- **Aliza**: `+16473909753`
+- **Ameya Damle**: `(408) 489-0695`
+- **Ammar**: `+12267003359`
+- **Amol**: `+16475359594`
+- **Anddro**: `(647)`
+- **Andrea Ramires Vasquez**: `(300) 946-5354`
+- **Andreas Medellin**: `+573009465354`
+- **Andres Navarro**: `+573008515673`
+- **Andrew**: `+15125399589`
+- **Andrew  Moore**: `+17806999502`
+- **Andrew Cousin (Blockbeam)**: `+13039902213`
+- **Andrew D3**: `+16479681559`
+- **Andrew Liutiev**: `+14168260302`
+- **Andy Riveras**: `+18456591348`
+- **Angel Garcia**: `+14196195633`
+- **Angela Barranquilla**: `+573017891668`
+- **Angus Porter**: `+17059942909`
+- **Anna Margarita**: `+573166985047`
+- **Annie Crozier**: `+17058889776`
+- **Anthony CH234**: `+12897075200`
+- **Antonio (Gym)**: `+15128103903`
+- **Anusha**: `+16479621430`
+- **Anya**: `+15126539323`
+- **Arian**: `+12014060743`
+- **Aric Jatana**: `+16479722742`
+- **Ariel B1**: `6475329247`
+- **Aron**: `(647)`
+- **Arsh**: `+16476095661`
+- **Arya**: `(647)`
+- **Ash**: `+16479076167`
+- **August**: `(512) 221-3004`
+- **Austin Beckham**: `(325) 668-0885`
+- **Austin Digital Bromad**: `+17194595237`
+- **Austin Twining**: `+17054449750`
+- **Avery Deshenkies**: `+16782307155`
+- **Aydan Finbow**: `+17054431204`
+- **Ben Chem**: `+17058456031`
+- **Ben Cummings**: `+16048665189`
+- **Ben Wowk**: `+19732169418`
+- **Benny Equinox**: `+13107741793`
+- **Beyhan**: `(416)`
+- **Bigioni**: `+16478921647`
+- **Blacho Barber**: `+573012319764`
+- **Brad Powell**: `+15129948329`
+- **Braden Usher**: `+17058884271`
+- **Braedan Hignett**: `+16479900177`
+- **Brando Stone**: `+17058886292`
+- **Brandon**: `+14167996837`
+- **Brandon Piroli**: `+17054466280`
+- **Brayden**: `+15192227779`
+- **Brent Ghikadis**: `+17057064233`
+- **Brian Page**: `+1 (843) 627-4847`
+- **Brian Shin**: `+12897070137`
+- **Cadey Comey**: `+14049063538`
+- **Caitlyn Redford**: `+12262200965`
+- **Caleb Spanish / Ball**: `+16476202517`
+- **Cali**: `+573161687551`
+- **Cam  Penner**: `+17059943113`
+- **Cam Penna**: `17059943113`
+- **Carina**: `+573122713078`
+- **Carlos**: `+14248886018`
+- **Carlos Finca**: `+573003471492`
+- **Caseritos**: `+573217374394`
+- **Cathi Shurety**: `(416) 737-8002`
+- **Celine**: `+32477618632`
+- **Chad**: `+15196970324`
+- **Chad Rose**: `+14036292520`
+- **Chad Turo (Vegas)**: `+17252103716`
+- **Chad Walding**: `1 (214) 546-2020`
+- **Chase**: `+1 (888) 204-8630`
+- **Chase 1**: `+1 88840105500`
+- **Chat GPT**: `+16162282684`
+- **Chloe ðŸ’˜**: `(226) 337-5562`
+- **Chris**: `+306978527379`
+- **Chris  Hamlin**: `+17054464213`
+- **Chris Don**: `+16479384514`
+- **Chris Gerrits**: `+15192886177`
+- **Chris Heredia**: `+50688964651`
+- **Chris Howie**: `(985) 237-3063`
+- **Chris Norseth**: `+12508842686`
+- **Chris Prucha**: `+17057945305`
+- **Christian Caicedo**: `(619) 952-5093`
+- **Christopher Johnson**: `+12678849272`
+- **Chuder Teny**: `+12265077725`
+- **Coach Sproule**: `+17058883627`
+- **Cody Zatzman**: `+16476256464`
+- **Cole Anderson**: `+17056060925`
+- **Collins**: `+12566651970`
+- **Connor Enrighr**: `+12894003967`
+- **Connor Ob**: `+14168452179`
+- **Corey Davison**: `+19197459527`
+- **Corey Solarpunks**: `+18084399477`
+- **Couchsurf Singapore**: `6591060245`
+- **Cynthia Steinberg**: `+16502489584`
+- **Dad**: `+17058883040`
+- **Damo**: `+13658856576`
+- **Dana**: `+50360484526`
+- **Daner**: `1`
+- **Daniel**: `15122842934`
+- **Daniel  Iphone**: `(512) 897-8575`
+- **Daniel Dajer**: `1 (908) 399-8978`
+- **Daniel Jessop**: `+19164301785`
+- **Daniel Mald**: `1`
+- **Daniel Maldonado**: `+15123178286`
+- **Daniel Puckett (Austin)**: `+14068305300`
+- **Danny El Guia**: `+573105386892`
+- **Danny Rivera**: `+19199313990`
+- **Dante**: `+18327856283`
+- **Dante Bolkovic**: `+16478331014`
+- **Darryl**: `+12402465070`
+- **David Evans**: `+17058886367`
+- **David S**: `+14166168018`
+- **David Samson**: `+15128282286`
+- **Davis Kadwell**: `+17054431249`
+- **Dawson Walker**: `+16138546055`
+- **Daya**: `+573008267523`
+- **Deep**: `+15197215219`
+- **Deivis Rapero C13**: `+573246574490`
+- **Derek Hobden**: `+19257863114`
+- **Devante**: `+16479263040`
+- **Devon Thomson**: `+12269232003`
+- **Dexter Bullen**: `+17059552011`
+- **Diana  Garcia**: `(831) 568-925`
+- **Diego**: `+19563301888`
+- **Diego Daboub**: `+13032633841`
+- **Diego TalÃ©**: `+50236095208`
+- **Dina**: `+13439873354`
+- **Diran Elsafi**: `+17137038088`
+- **Do Anything Agent**: `+18339624769`
+- **Domi**: `+573126694079`
+- **Donna Bay Haven**: `+17057253861`
+- **Donovan Crescent**: `+15127316625`
+- **Dylan**: `+19716785554`
+- **Dylan Vask**: `+16475336529`
+- **Eddie Rosenfeld**: `+1 (619) 623-2881`
+- **Eduardo  Solar Blockchain**: `+573186388750`
+- **Ehab**: `+12899314368`
+- **English**: `(226)`
+- **Eric Newcomb**: `+19056309342`
+- **Eron**: `(647) 767-4863`
+- **Esnader Plata Colombia**: `+573137625886`
+- **Ethan Ward**: `+12896870979`
+- **Evan Finbow**: `+14169085595`
+- **Eve**: `+16476494848`
+- **Fahim Ahmed**: `+12899817130`
+- **Fernando Rio**: `+5521988351729`
+- **Finca**: `+573243605863`
+- **Floyd**: `+13373081903`
+- **Foreest**: `+15122764731`
+- **Freddie Airport**: `+59168009465`
+- **Front Desk**: `+573168069925`
+- **Fynn McPherson**: `+17377045866`
+- **Ganish**: `+14168204150`
+- **Gary Cooper**: `+17053334180`
+- **Gb**: `(647)`
+- **Geoff Berriault**: `+17059942098`
+- **Geoff Jones**: `+17058881519`
+- **German Driver**: `+573214954223`
+- **Glorious**: `(647)`
+- **Grandma**: `+17059942320`
+- **Grenada**: `(647)`
+- **Grotezko**: `+573225682230`
+- **Gu**: `(209) 949-1103`
+- **Guerrero Uber**: `+56972229034`
+- **Guillame**: `+16472048263`
+- **Hank Severn**: `+14106880229`
+- **Homero**: `+15594035561`
+- **Horacio Rilo**: `+15208224599`
+- **Ian Mcdonald**: `+17058889864`
+- **Iman**: `+16476713017`
+- **Iris**: `+12268082467`
+- **Isabel**: `+56982496340`
+- **Ivan Pashov**: `+359893256865`
+- **jack**: `+14379798404`
+- **Jack Cheesey**: `+17058888005`
+- **Jack Malloch**: `+353873371685`
+- **Jackson Elliot**: `+17059947676`
+- **Jacob Roberts**: `(647)`
+- **Jaedan Laurier**: `+16472489484`
+- **Jai**: `+14377797139`
+- **Jake**: `+18478047878`
+- **Jake CArlson**: `+16043698861`
+- **Jalen**: `+17059943291`
+- **Jamal Arjive**: `+16693028377`
+- **Jamal Lewis Ontario**: `+16477050369`
+- **James Chambers**: `(705)`
+- **Jamie Roydhouse**: `+64 22 401 9065`
+- **Jane**: `(647) 391-0191`
+- **Janet**: `(647)`
+- **Jared**: `+16474561156`
+- **Jay 1kðŸ**: `+12268082413`
+- **Jayden Grewal**: `+19053340057`
+- **Jeet Deb (Solar)**: `+19054655259`
+- **Jen S**: `(737) 329-5624`
+- **Jerome**: `+16479780557`
+- **Jess Bosveld**: `+60 17-326 7405`
+- **Jesse  Fig**: `+17057169289`
+- **Jhonatan Zapata Uber**: `+573112717217`
+- **Jiggy**: `+19052594625`
+- **Jo**: `(725) 587-4410`
+- **Joe**: `+14164734889`
+- **Joel Halvorsen**: `+17054412049`
+- **Joel Pressa**: `+19053342705`
+- **John**: `+1573044069369`
+- **John Carson**: `(289)`
+- **John Dallaa**: `1 (469) 226-0559`
+- **John H Town**: `8322174808`
+- **John Lozano**: `+573044069369`
+- **Jonathan**: `+17063737581`
+- **Jonathan Angarita**: `+573103062092`
+- **Jonathan Scharf**: `(516) 305-1438`
+- **Jonny**: `+573113497813`
+- **Jonny Seh**: `(519) 591-2288`
+- **Jordan Mazzon**: `+19055802643`
+- **Jorge  Barbosa De Medellin**: `+573124315352`
+- **Jorge Heartsil**: `+18329229674`
+- **Jose**: `+573243892458`
+- **Jose  Alirio**: `(226) 753-6971`
+- **Josh Devas**: `+12899812430`
+- **Josh Ecom**: `+14163058361`
+- **Josh Rea**: `+14168920901`
+- **Juan**: `+1 (650) 270-5202`
+- **Juan Borja  Medellin**: `+573147494577`
+- **Julia**: `+16472448786`
+- **JuliÃ¡n  PÃ©rez ERCO ENERGY**: `+573209114705`
+- **Julian**: `+17074814412`
+- **Julien Typha Co**: `+12048940017`
+- **Justin B**: `+16479641393`
+- **Justin Malnerich**: `+12267553849`
+- **Kareese Akinbola**: `+16057866417`
+- **Karina**: `+56988494884`
+- **Karthi**: `+19162208298`
+- **Kemel**: `+16475690178`
+- **Kevin Lowe**: `+60195503300`
+- **Kevin Stevens**: `5195896821`
+- **Khiem**: `+12269721050`
+- **Kia Gym**: `+14157130421`
+- **Kieran Mckenna**: `+14157555928`
+- **Klutch Koa**: `+14805627112`
+- **Kofi**: `+14249022646`
+- **Kristian**: `+14168099059`
+- **Kyle  Rourke**: `(248) 804-3262`
+- **Larry Austin Vertical Farming**: `+1 (512) 629-5230`
+- **Laundry**: `+50254833239`
+- **Laura Mafridge**: `+17132228696`
+- **Lela**: `+15199940681`
+- **Lenin**: `+19165807954`
+- **Lenny**: `+17052798449`
+- **Leonard  D souza**: `(647) 671-4956`
+- **Liam Magee**: `+17058888097`
+- **Liam Sundberg**: `+17058887124`
+- **Lim Sundberg**: `+12367953652`
+- **Limia M**: `+16477622344`
+- **Limu Marzan**: `6591060245`
+- **Lincoln Panasy**: `+16479914166`
+- **Luca ðŸ€**: `+19053968866`
+- **Lucas Mcdon**: `+17057907667`
+- **Lucas Richards**: `+16476483837`
+- **Luke Enrighr**: `+17058884073`
+- **Lyle Porter**: `+17054449094`
+- **Mac Thompson**: `+17058886561`
+- **Maccleson**: `+16476227693`
+- **Mackena Smith**: `(707) 365-7138`
+- **Malik Santa Marta**: `+18502401124`
+- **marÃ­a palazon**: `+5491154797079`
+- **Marco Jose**: `+573166672562`
+- **Marcus Penaloza**: `+15192399024`
+- **Maria Diaz**: `+57 (300) 495-6273`
+- **Mark Tan**: `+16475807148`
+- **martina**: `+1 (647) 545-6884`
+- **Marvin E**: `+16478953585`
+- **Mathusan**: `+14168973383`
+- **Matt 188 King**: `+16475442207`
+- **Matt 9 Hick**: `+14415054941`
+- **Matt Code**: `+17053510135`
+- **Matt Fes**: `+12892003499`
+- **Matt Melo**: `+16472013130`
+- **Matty Webs**: `+17054444291`
+- **Matze**: `+50246339443`
+- **Max Beeson**: `(905)`
+- **Max Sias**: `+19515757743`
+- **Meena**: `+1 (905) 582-0150`
+- **Megan Waterloo**: `+12899256331`
+- **Mehmed**: `+15124705823`
+- **MenjivarSurfing**: `+50375334194`
+- **Michael Ferraira**: `+15195748410`
+- **Miguel**: `+56975822704`
+- **Mike**: `+14168099837`
+- **Mike Aikens**: `+17058886557`
+- **Mike Mance**: `+14168940956`
+- **Mike Okenye**: `+13658893484`
+- **Mitch Thesis**: `+19059204552`
+- **Mittel**: `+17058182929`
+- **Mo**: `(647)`
+- **Moe**: `+16475140022`
+- **Moms**: `+17054466502`
+- **Mona**: `+60`
+- **Morey Doner**: `+17054414699`
+- **Myka**: `+12263787469`
+- **Nak**: `+855 89 988 577`
+- **Nate**: `+16477710345`
+- **Nate  Hare**: `+19057195130`
+- **Nathan Kiobola**: `(647)`
+- **Nathan Peavey**: `+15125696612`
+- **Ned**: `+15195903798`
+- **Neel Shanmugan**: `+19722739630`
+- **Nic Sproule**: `+17058880385`
+- **Nick Laurier Ball**: `+12263394134`
+- **Nick Lee**: `(416)`
+- **Nick Roomate**: `+15194981471`
+- **Nick Rosen**: `+1447971543703`
+- **Nick Stanford**: `+18156401606`
+- **Nicole**: `+14168890876`
+- **Nikola Hejnz**: `+19053804195`
+- **Olivia Connel**: `+17052795769`
+- **Osama**: `+12266069977`
+- **Oscar Maldonado**: `(832) 309-9688`
+- **Pastor Luis De La Cruz**: `(281) 541-5806`
+- **Patrick Bos**: `+15874390112`
+- **Patrick Bray**: `+17052797812`
+- **Peri**: `+14168907596`
+- **Pete Henderson**: `+14156225246`
+- **Peter Moore**: `+17809450833`
+- **Philly Cheez**: `+17054416533`
+- **Pierson**: `+17053297169`
+- **Pk**: `(705)`
+- **Pocho**: `+12108545655`
+- **poonam patel**: `+1 (510) 935-4370`
+- **Precise**: `(775) 486-5132`
+- **Quinn Seeger**: `+17153167272`
+- **Quinsea**: `+17054400448`
+- **Rachel**: `+15198038255`
+- **Raghav**: `+15197495984`
+- **Randy Parole**: `+19496125124`
+- **Reâ€™Nita Stovall**: `(480) 399-7046`
+- **Remington Evelyn**: `+14169497379`
+- **Renaldo**: `+15127779579`
+- **Reps King**: `+447533813558`
+- **Reza**: `(519)`
+- **Reza Panah**: `+1 (647) 232-7392`
+- **Richard Neidert**: `(519) 841-3299`
+- **Richard Santa Marta**: `+573007629996`
+- **Rimy Huntley**: `+639664666949`
+- **Rob Luba**: `16474598853`
+- **Robel**: `+16476375037`
+- **Roberto Ramos**: `+34697691899`
+- **Roman Biosdado (Texas) Brownsville**: `(678) 936-5924`
+- **Rosalba**: `+573218175196`
+- **Roshawn**: `(647)`
+- **Ruben Transport Medellin**: `+573002484432`
+- **Ry Nasty**: `7059942982`
+- **Sabra**: `+12265053056`
+- **Sade Abdi**: `+16477612360`
+- **Sam**: `+19177040909`
+- **Sam Scribner**: `+19784607940`
+- **Sam Smith**: `+13305418725`
+- **Santiago**: `+16478625993`
+- **Santiago Crescent**: `+19174564681`
+- **Sarah**: `+14038091890`
+- **Sarah Bio**: `+14167863009`
+- **Sarah Strandholt**: `+16692739520`
+- **Sarah Sullivan**: `+13103441202`
+- **Saroush**: `+14167234219`
+- **Scott Mclean**: `+17055006925`
+- **Sean Mens League**: `+16473037377`
+- **Sebastian  Colombia**: `+573193164949`
+- **Seedy**: `+12266008250`
+- **Sehansi (SiSi)**: `(226) 500-7383`
+- **Selena**: `(416)`
+- **Sheyrar**: `+16477671539`
+- **Sim Enviro Sci**: `+16475505793`
+- **Simar**: `+16478031323`
+- **Simon Chen**: `+17789848473`
+- **Simon Envigado**: `+573052132922`
+- **Soheir**: `+14168754292`
+- **Sonja**: `+18328405341`
+- **Sonja Hooks**: `+18327547970`
+- **Spencer Mc**: `(705)`
+- **Star**: `(901) 675-1730`
+- **Stephanie**: `+15192159371`
+- **Stig Air BNB**: `+573215170681`
+- **Stir Fry**: `+16479229861`
+- **Susie**: `+1 (512) 565-2282`
+- **Syd Davis**: `+16478823029`
+- **Sydney Odigie**: `+16477831879`
+- **Tad Glauthier**: `+18087992063`
+- **Taj**: `+16474700165`
+- **Tamara**: `(404) 516-7591`
+- **Tan Volunteer**: `+60149039510`
+- **Tara Bailey**: `(705)`
+- **Taran Singh**: `+17059943500`
+- **Tarlin**: `+16475715849`
+- **Tate Whitney**: `(808) 430-9887`
+- **Teo Hoppe**: `+14319998921`
+- **Test Chase**: `+1 (888) 401-0550`
+- **Thofs**: `+17058966113`
+- **Tim Medellin**: `+19194070055`
+- **Tony  Bio**: `+16479939275`
+- **Tony (ASU)**: `+1 (916) 412-5799`
+- **Treg**: `+14164000389`
+- **Trevor Hough**: `+17056061048`
+- **Trevor Lang**: `+17056071777`
+- **Troy**: `+14167167330`
+- **Tyler  McNulty**: `+16105742259`
+- **Tyson Benjamin**: `+17057954194`
+- **Uncl Mike**: `+17133630593`
+- **Vanesa Colombia**: `+573007239266`
+- **Vic**: `+13106998110`
+- **Victor Medellin**: `+573216859012`
+- **Victoria**: `(231) 855-3568`
+- **Vlad Mikyulik**: `+16478019119`
+- **William Heartsill**: `+17138198373`
+- **Woyce**: `+60 11-2354 6150`
+- **Xavier Gillespie**: `(519)`
+- **Yeom**: `+66 98 812 9596`
+- **Yonah Feld**: `+18188509840`
+- **Young Tori**: `+17059898674`
+- **Yulieth Chiquillo**: `+573114339667`
+- **Yulit**: `+573202420170`
+- **Zach Rector**: `+17086346543`
+- **Zay**: `(510) 610-3049`
+- **Zhi Long**: `+12544029315`
+- **Zidane**: `+16472229170`
+- **Zora ZorkiÄ‡**: `(832) 266-9727`
+- **Zubair Seyed**: `+14169120779`
+

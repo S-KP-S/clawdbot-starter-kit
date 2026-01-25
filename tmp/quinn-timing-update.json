@@ -1,0 +1,5 @@
+{
+  "responseDelaySeconds": 1,
+  "numWordsToInterruptAssistant": 1,
+  "interruptionsEnabled": true
+}

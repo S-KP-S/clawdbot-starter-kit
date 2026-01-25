@@ -1,0 +1,15 @@
+{
+  "type": "query",
+  "function": {
+    "name": "searchQuinnKnowledge",
+    "description": "Search Quinn's knowledge base for information about Spencer, booking rules, and how to handle calls"
+  },
+  "knowledgeBases": [
+    {
+      "provider": "google",
+      "name": "quinn-knowledge",
+      "description": "Contains information about Spencer Strandholt, booking rules, how Quinn should handle calls, and general assistant guidelines",
+      "fileIds": ["96b30948-0122-4170-9c21-cb04307f13ca"]
+    }
+  ]
+}
