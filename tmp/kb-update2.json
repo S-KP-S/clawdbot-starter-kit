@@ -1,0 +1,10 @@
+{
+  "knowledgeBases": [
+    {
+      "name": "quinn-knowledge",
+      "provider": "google",
+      "description": "Contains information about Spencer Strandholt, booking rules, contacts, and how Quinn should handle calls",
+      "fileIds": ["96b30948-0122-4170-9c21-cb04307f13ca", "ecd926a1-a00a-4289-b926-9aecb6eb7a4d"]
+    }
+  ]
+}

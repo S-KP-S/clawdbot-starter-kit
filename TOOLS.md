@@ -54,7 +54,7 @@ Then update the KB tool with the new file ID.
 **Current contacts:**
 | Phone | Name | Email |
 |-------|------|-------|
-| +14166066891 | Ahsan | baslamiyasan@gmail.com |
+| +14166066891 | Ahsan | eslamiahsan@gmail.com |
 
 ### Outbound Call Template
 ```json
