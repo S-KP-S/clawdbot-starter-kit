@@ -56,7 +56,7 @@ Then update the KB tool with the new file ID.
 |-------|------|-------|
 | +14166066891 | Ahsan | eslamiahsan@gmail.com |
 
-### Outbound Call Template
+### Outbound Call Template (Basic)
 ```json
 {
   "phoneNumberId": "8a3a8ec3-6f30-42ed-9483-fdd209b3020f",
@@ -68,6 +68,34 @@ Then update the KB tool with the new file ID.
     "number": "+1XXXXXXXXXX",
     "name": "Contact Name"
   }
+}
+```
+
+### Outbound Call - Restaurant Reservation Template
+See `tmp/outbound-reservation-prompt.md` for full prompt.
+
+**Key rules for outbound calls to businesses:**
+1. **Voicemail detection** - if you hear "leave your name, phone, date..." = leave verbal message
+2. **DTMF restraint** - ONLY press buttons when told "press X for Y"
+3. **Speak don't press** - when asked for info (name, date, party size), speak it
+4. **IVR escape** - say "operator" or "representative" if stuck
+5. **Loop detection** - end call after 2 "incorrect" errors
+
+```json
+{
+  "phoneNumberId": "8a3a8ec3-6f30-42ed-9483-fdd209b3020f",
+  "assistantOverrides": {
+    "firstMessage": "Hi! I'm hoping to make a dinner reservation for tonight if you have any availability.",
+    "model": {
+      "model": "gpt-4o-mini",
+      "provider": "openai",
+      "messages": [{
+        "role": "system",
+        "content": "[see tmp/outbound-reservation-prompt.md]"
+      }]
+    }
+  },
+  "customer": { "number": "+1XXXXXXXXXX", "name": "Restaurant Name" }
 }
 ```
 

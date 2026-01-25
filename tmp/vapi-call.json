@@ -1,7 +1,21 @@
 {
   "phoneNumberId": "8a3a8ec3-6f30-42ed-9483-fdd209b3020f",
-  "assistantId": "fe12654f-faed-43fc-b892-ba5efea3b454",
+  "assistantId": "a1a8c748-b206-44c2-971f-f31cccd99f35",
+  "assistantOverrides": {
+    "firstMessage": "Hi! I'm calling to make a dinner reservation for tonight if you have any availability.",
+    "model": {
+      "model": "gpt-4o-mini",
+      "provider": "openai",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are Quinn, calling on behalf of Spencer Strandholt to make a restaurant reservation at Caffe Molise.\n\nYour goal: Book a dinner reservation for TONIGHT (Saturday, January 25, 2026).\n\nDetails to provide:\n- Party size: 2 people\n- Preferred time: Around 7:00 PM or 7:30 PM (flexible)\n- Name for reservation: Spencer Strandholt\n- Phone: (737) 376-8046\n\nBe polite and friendly. If they don't have availability at 7pm, ask what times they do have tonight and accept a reasonable alternative (6pm-9pm range).\n\nIf they're fully booked tonight, thank them and end the call politely.\n\nOnce reservation is confirmed, repeat back the details (time, party size, name) to confirm, thank them, and end the call.\n\nDo NOT mention you are an AI. You are Quinn, Spencer's assistant calling to book a table."
+        }
+      ]
+    }
+  },
   "customer": {
-    "number": "+17373768046"
+    "number": "+18013648833",
+    "name": "Caffe Molise"
   }
 }
