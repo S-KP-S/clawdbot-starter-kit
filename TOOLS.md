@@ -105,6 +105,17 @@ See `tmp/outbound-reservation-prompt.md` for full prompt.
 - Voice: Spencer's custom ElevenLabs (`hmMWXCj9K7N5mCPcRkfC`)
 - First message: "Hey Spencer! It's Clawd. What's up?"
 
+## Whisper Transcription (Local - FREE)
+- **App:** Vibe (local Whisper)
+- **Path:** C:\Users\spenc\AppData\Local\vibe\vibe.exe
+- **Model:** C:\Users\spenc\clawd\models\ggml-small.bin (466MB)
+- **Script:** C:\Users\spenc\clawd\scripts\transcribe.ps1
+
+### Transcribe Audio
+```powershell
+powershell -ExecutionPolicy Bypass -File "C:\Users\spenc\clawd\scripts\transcribe.ps1" -AudioFile "path\to\audio.ogg"
+```
+
 ## ElevenLabs TTS
 - **API Key:** sk_81ac05fe30f6719dab7d80380a3422284c43d7eb575fd597
 - **Quinn voice ID:** hmMWXCj9K7N5mCPcRkfC ✓ ← ALWAYS use this for Quinn
@@ -112,6 +123,37 @@ See `tmp/outbound-reservation-prompt.md` for full prompt.
 - **Fallback voice:** Rachel (21m00Tcm4TlvDq8ikWAM) — works on free tier
 - **Model:** eleven_turbo_v2 (free tier compatible)
 - **Script:** C:\Users\spenc\clawd\tmp\tts.ps1
+
+## Google Calendar
+- **Script:** `node scripts/gcal.js`
+- **Tokens:** `~/.config/google-calendar/tokens.json`
+- **OAuth Client:** vigilant-card-485301-v2 (same as Drive)
+- **Spencer's primary calendar:** spencerkstrandholt@gmail.com
+
+### Commands
+```powershell
+# List calendars
+node scripts/gcal.js calendars
+
+# List upcoming events
+node scripts/gcal.js events [calendarId] [count]
+
+# Create event (with optional Google Meet)
+node scripts/gcal.js create '{"title":"Meeting","start":"2026-01-27T14:00:00","end":"2026-01-27T15:00:00","meet":true,"attendees":["email@example.com"],"notify":true}'
+
+# Delete event
+node scripts/gcal.js delete <eventId> [calendarId]
+```
+
+### Event Options
+- `title` (required) — event name
+- `start` / `end` (required) — ISO datetime strings
+- `timezone` — defaults to America/Chicago
+- `description` — event description
+- `meet` — boolean, creates Google Meet link
+- `attendees` — array of email addresses
+- `notify` — boolean, sends invites to attendees
+- `calendarId` — defaults to 'primary'
 
 ## Email (via Gmail)
 - **Account:** quinn.strandholt@gmail.com
