@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦊 SPENCER'S NEURAL CORE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --neon-cyan: #00f5ff;
+            --neon-pink: #ff00ff;
+            --neon-purple: #b347d9;
+            --neon-blue: #0080ff;
+            --neon-green: #00ff88;
+            --neon-orange: #ff6600;
+            --dark-bg: #050508;
+            --panel-bg: rgba(10, 10, 20, 0.7);
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--dark-bg);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* ===== WEBGL CANVAS BACKGROUND ===== */
+        #neural-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* ===== SCANLINES OVERLAY ===== */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0) 0px,
+                rgba(0, 0, 0, 0) 1px,
+                rgba(0, 255, 255, 0.03) 1px,
+                rgba(0, 255, 255, 0.03) 2px
+            );
+            z-index: 1;
+            pointer-events: none;
+            animation: scanlineMove 8s linear infinite;
+        }
+        
+        @keyframes scanlineMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(4px); }
+        }
+        
+        /* ===== FLOATING PARTICLES ===== */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--neon-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--neon-cyan), 0 0 12px var(--neon-cyan);
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+        }
+        
+        /* ===== MAIN CONTAINER ===== */
+        .hologram-container {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+            perspective: 2000px;
+        }
+        
+        /* ===== HEADER ===== */
+        .core-header {
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .core-header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            animation: pulseLine 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulseLine {
+            0%, 100% { opacity: 0.3; box-shadow: 0 0 5px var(--neon-cyan); }
+            50% { opacity: 1; box-shadow: 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan); }
+        }
+        
+        .core-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            letter-spacing: 0.3em;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(0, 245, 255, 0.5);
+            animation: glitch 5s infinite;
+            position: relative;
+        }
+        
+        @keyframes glitch {
+            0%, 90%, 100% { transform: translate(0); filter: hue-rotate(0deg); }
+            92% { transform: translate(-2px, 1px); }
+            94% { transform: translate(2px, -1px); filter: hue-rotate(90deg); }
+            96% { transform: translate(-1px, 2px); }
+            98% { transform: translate(1px, -2px); filter: hue-rotate(-90deg); }
+        }
+        
+        .core-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--neon-cyan);
+            letter-spacing: 0.5em;
+            margin-top: 10px;
+            opacity: 0.7;
+            animation: typewriter 4s steps(40) 1s 1 normal both;
+        }
+        
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        .timestamp {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--neon-green);
+            background: rgba(0, 255, 136, 0.1);
+            padding: 4px 12px;
+            border: 1px solid var(--neon-green);
+            border-radius: 4px;
+        }
+        
+        /* ===== NORTH STAR - CENTRAL ORB ===== */
+        .north-star-orbital {
+            position: relative;
+            height: 400px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+        
+        .orbital-ring {
+            position: absolute;
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            border-radius: 50%;
+            animation: rotate3d 20s linear infinite;
+        }
+        
+        .orbital-ring:nth-child(1) { width: 300px; height: 300px; animation-duration: 30s; border-color: rgba(0, 245, 255, 0.3); }
+        .orbital-ring:nth-child(2) { width: 380px; height: 380px; animation-duration: 25s; animation-direction: reverse; border-color: rgba(255, 0, 255, 0.2); }
+        .orbital-ring:nth-child(3) { width: 460px; height: 460px; animation-duration: 35s; border-color: rgba(179, 71, 217, 0.15); }
+        .orbital-ring:nth-child(4) { width: 540px; height: 540px; animation-duration: 40s; animation-direction: reverse; border-color: rgba(0, 255, 136, 0.1); }
+        
+        @keyframes rotate3d {
+            from { transform: rotateX(60deg) rotateZ(0deg); }
+            to { transform: rotateX(60deg) rotateZ(360deg); }
+        }
+        
+        .central-core {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .core-orb {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, var(--neon-cyan), var(--neon-purple), transparent 70%);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: corePulse 3s ease-in-out infinite;
+            filter: blur(10px);
+        }
+        
+        @keyframes corePulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+        
+        .core-inner {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 2px solid var(--neon-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 30px var(--neon-cyan), inset 0 0 30px rgba(0, 245, 255, 0.2);
+            animation: rotateCore 10s linear infinite;
+        }
+        
+        @keyframes rotateCore {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .core-content {
+            position: relative;
+            z-index: 11;
+        }
+        
+        .core-goal {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 20px var(--neon-cyan);
+        }
+        
+        .core-amount {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+        }
+        
+        .core-deadline {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--neon-pink);
+            letter-spacing: 0.2em;
+        }
+        
+        .core-progress {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+        }
+        
+        .progress-bar-circular {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill-circular {
+            height: 100%;
+            width: 16%;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
+            border-radius: 3px;
+            animation: progressGlow 2s ease-in-out infinite;
+            position: relative;
+        }
+        
+        .progress-fill-circular::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8));
+            animation: progressShine 2s ease-in-out infinite;
+        }
+        
+        @keyframes progressGlow {
+            0%, 100% { box-shadow: 0 0 10px var(--neon-cyan); }
+            50% { box-shadow: 0 0 25px var(--neon-cyan), 0 0 40px var(--neon-green); }
+        }
+        
+        @keyframes progressShine {
+            0% { transform: translateX(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(20px); opacity: 0; }
+        }
+        
+        .progress-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--neon-cyan);
+            text-align: center;
+            margin-top: 8px;
+        }
+        
+        /* ===== FLOATING DATA NODES ===== */
+        .data-constellation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .data-node {
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.05), rgba(255, 0, 255, 0.03));
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+        
+        .data-node::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--neon-cyan), transparent 30%);
+            animation: borderRotate 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .data-node:hover::before {
+            opacity: 0.1;
+        }
+        
+        @keyframes borderRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .data-node:hover {
+            transform: translateY(-8px) rotateX(5deg);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 20px 40px rgba(0, 245, 255, 0.2), 0 0 60px rgba(0, 245, 255, 0.1);
+        }
+        
+        .node-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .node-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .node-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            opacity: 0.2;
+        }
+        
+        .node-icon.trading { border: 1px solid var(--neon-green); box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+        .node-icon.agency { border: 1px solid var(--neon-blue); box-shadow: 0 0 20px rgba(0, 128, 255, 0.3); }
+        .node-icon.quinn { border: 1px solid var(--neon-orange); box-shadow: 0 0 20px rgba(255, 102, 0, 0.3); }
+        .node-icon.ideas { border: 1px solid var(--neon-pink); box-shadow: 0 0 20px rgba(255, 0, 255, 0.3); }
+        .node-icon.people { border: 1px solid var(--neon-purple); box-shadow: 0 0 20px rgba(179, 71, 217, 0.3); }
+        .node-icon.personal { border: 1px solid #ff6b9d; box-shadow: 0 0 20px rgba(255, 107, 157, 0.3); }
+        
+        .node-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        
+        .node-title span { color: var(--neon-cyan); }
+        
+        .node-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* ===== PROJECT PODS ===== */
+        .project-pod {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-pod::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 0;
+            background: linear-gradient(90deg, var(--neon-cyan), transparent);
+            transition: width 0.3s;
+            opacity: 0.3;
+        }
+        
+        .project-pod:hover::before {
+            width: 100%;
+        }
+        
+        .project-pod:hover {
+            transform: translateX(8px);
+            border-left-color: var(--neon-cyan);
+        }
+        
+        .pod-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .pod-icon.trading { background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 136, 0.05)); }
+        .pod-icon.agency { background: linear-gradient(135deg, rgba(0, 128, 255, 0.2), rgba(0, 128, 255, 0.05)); }
+        .pod-icon.quinn { background: linear-gradient(135deg, rgba(255, 102, 0, 0.2), rgba(255, 102, 0, 0.05)); }
+        .pod-icon.client { background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 193, 7, 0.05)); }
+        .pod-icon.solar { background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.05)); }
+        
+        .pod-details { flex: 1; }
+        .pod-name { font-weight: 600; font-size: 0.95rem; }
+        .pod-status { font-size: 0.8rem; color: #888; margin-top: 2px; }
+        
+        .pod-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .pod-badge.live { background: rgba(0, 255, 136, 0.15); color: var(--neon-green); border: 1px solid var(--neon-green); box-shadow: 0 0 10px rgba(0, 255, 136, 0.2); }
+        .pod-badge.active { background: rgba(0, 128, 255, 0.15); color: var(--neon-blue); border: 1px solid var(--neon-blue); }
+        .pod-badge.paused { background: rgba(255, 193, 7, 0.15); color: #ffc107; border: 1px solid #ffc107; }
+        .pod-badge.pending { background: rgba(255, 102, 0, 0.15); color: var(--neon-orange); border: 1px solid var(--neon-orange); }
+        
+        /* ===== FOCUS TASKS ===== */
+        .focus-task {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .focus-task:last-child { border-bottom: none; }
+        
+        .task-orb {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid;
+            flex-shrink: 0;
+            margin-top: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .task-orb.high { border-color: #ff4444; box-shadow: 0 0 10px rgba(255, 68, 68, 0.3); }
+        .task-orb.med { border-color: #ffaa00; box-shadow: 0 0 10px rgba(255, 170, 0, 0.3); }
+        .task-orb.low { border-color: var(--neon-green); box-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
+        
+        .task-orb.done {
+            background: var(--neon-green);
+            border-color: var(--neon-green);
+        }
+        
+        .task-orb.done::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.7rem;
+            color: #000;
+            font-weight: bold;
+        }
+        
+        .task-text { font-size: 0.9rem; }
+        .task-text.done { text-decoration: line-through; opacity: 0.5; }
+        .task-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; margin-top: 4px; }
+        
+        /* ===== TRADING STATS - HOLOGRAPHIC ===== */
+        .stat-matrix {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .stat-cell {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .stat-cell::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            animation: scanDown 3s ease-in-out infinite;
+        }
+        
+        @keyframes scanDown {
+            0%, 100% { transform: translateY(0); opacity: 0; }
+            50% { transform: translateY(100px); opacity: 1; }
+        }
+        
+        .stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-value.positive { color: var(--neon-green); text-shadow: 0 0 20px rgba(0, 255, 136, 0.5); }
+        .stat-value.negative { color: #ff4444; text-shadow: 0 0 20px rgba(255, 68, 68, 0.5); }
+        .stat-value.neutral { color: var(--neon-cyan); text-shadow: 0 0 20px rgba(0, 245, 255, 0.5); }
+        
+        .stat-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 8px;
+        }
+        
+        .trading-alert {
+            margin-top: 15px;
+            padding: 12px;
+            background: linear-gradient(135deg, rgba(255, 68, 68, 0.1), rgba(255, 68, 68, 0.05));
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            border-radius: 8px;
+            font-size: 0.8rem;
+        }
+        
+        .alert-label { color: #ff4444; font-weight: 600; }
+        
+        /* ===== IDEA CARDS ===== */
+        .idea-fragment {
+            display: flex;
+            gap: 12px;
+            padding: 14px;
+            background: rgba(255, 0, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 0, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .idea-fragment:hover {
+            background: rgba(255, 0, 255, 0.1);
+            border-color: var(--neon-pink);
+            transform: translateX(5px);
+        }
+        
+        .idea-icon { font-size: 1.5rem; }
+        .idea-content { flex: 1; }
+        .idea-title { font-weight: 600; font-size: 0.9rem; }
+        .idea-desc { font-size: 0.8rem; color: #888; margin-top: 4px; }
+        .idea-cost {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            background: rgba(255, 0, 255, 0.15);
+            border-radius: 20px;
+            color: var(--neon-pink);
+            white-space: nowrap;
+        }
+        
+        /* ===== PEOPLE GRID ===== */
+        .person-entity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+        
+        .person-entity:hover {
+            background: rgba(179, 71, 217, 0.1);
+            transform: scale(1.02);
+        }
+        
+        .person-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            position: relative;
+        }
+        
+        .person-avatar::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
+            z-index: -1;
+        }
+        
+        .person-avatar::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: #0a0a15;
+        }
+        
+        .person-avatar span { position: relative; z-index: 1; }
+        .person-name { font-weight: 600; font-size: 0.95rem; }
+        .person-role { font-size: 0.8rem; color: #888; }
+        
+        /* ===== PERSONAL EVENTS ===== */
+        .event-timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .event-timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #ff6b9d, transparent);
+        }
+        
+        .event-node {
+            position: relative;
+            padding: 14px;
+            background: rgba(255, 107, 157, 0.08);
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 107, 157, 0.15);
+        }
+        
+        .event-node::before {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 20px;
+            width: 10px;
+            height: 10px;
+            background: #ff6b9d;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #ff6b9d;
+        }
+        
+        .event-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #ff6b9d;
+            letter-spacing: 0.1em;
+        }
+        
+        .event-title { font-weight: 600; margin-top: 4px; }
+        .event-details { font-size: 0.8rem; color: #888; margin-top: 4px; }
+        
+        /* ===== ROADMAP - 3D TUNNEL ===== */
+        .roadmap-tunnel {
+            position: relative;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+            border-radius: 20px;
+            border: 1px solid rgba(0, 245, 255, 0.15);
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        
+        .roadmap-tunnel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-purple), transparent);
+        }
+        
+        .tunnel-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 20px var(--neon-cyan);
+        }
+        
+        .timeline-track {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            position: relative;
+        }
+        
+        .timeline-phase {
+            position: relative;
+        }
+        
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid;
+        }
+        
+        .phase-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            animation: phasePulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes phasePulse {
+            0%, 100% { box-shadow: 0 0 5px currentColor; }
+            50% { box-shadow: 0 0 20px currentColor, 0 0 40px currentColor; }
+        }
+        
+        .phase-header.now { border-color: #ff4444; color: #ff4444; }
+        .phase-header.now .phase-dot { background: #ff4444; color: #ff4444; }
+        .phase-header.soon { border-color: #ffaa00; color: #ffaa00; }
+        .phase-header.soon .phase-dot { background: #ffaa00; color: #ffaa00; }
+        .phase-header.later { border-color: var(--neon-green); color: var(--neon-green); }
+        .phase-header.later .phase-dot { background: var(--neon-green); color: var(--neon-green); }
+        
+        .phase-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+        
+        .phase-item {
+            padding: 14px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .phase-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .timeline-phase.now .phase-item:hover { border-left-color: #ff4444; }
+        .timeline-phase.soon .phase-item:hover { border-left-color: #ffaa00; }
+        .timeline-phase.later .phase-item:hover { border-left-color: var(--neon-green); }
+        
+        .phase-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--neon-cyan);
+            margin-bottom: 6px;
+            letter-spacing: 0.1em;
+        }
+        
+        .phase-text { font-size: 0.9rem; }
+        
+        /* ===== ALL PROJECTS - GRID MATRIX ===== */
+        .projects-matrix {
+            position: relative;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+            border-radius: 20px;
+            border: 1px solid rgba(0, 128, 255, 0.15);
+        }
+        
+        .matrix-header {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--neon-blue);
+            text-shadow: 0 0 20px var(--neon-blue);
+        }
+        
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .matrix-cell {
+            padding: 18px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .matrix-cell::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 128, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .matrix-cell:hover::before {
+            left: 100%;
+        }
+        
+        .matrix-cell:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 30px rgba(0, 128, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .cell-status {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 5px currentColor; }
+            50% { opacity: 0.6; box-shadow: 0 0 15px currentColor; }
+        }
+        
+        .cell-status.active { background: var(--neon-green); color: var(--neon-green); }
+        .cell-status.dormant { background: #666; color: #666; }
+        .cell-status.idea { background: var(--neon-purple); color: var(--neon-purple); }
+        
+        .cell-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+        }
+        
+        .cell-path {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #666;
+        }
+        
+        /* ===== CONNECTION LINES SVG ===== */
+        .connection-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.3;
+        }
+        
+        .connection-line {
+            stroke: var(--neon-cyan);
+            stroke-width: 1;
+            fill: none;
+            stroke-dasharray: 5, 5;
+            animation: dashMove 20s linear infinite;
+        }
+        
+        @keyframes dashMove {
+            to { stroke-dashoffset: -100; }
+        }
+        
+        /* ===== FOOTER DECORATION ===== */
+        .footer-deco {
+            text-align: center;
+            padding: 40px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #444;
+            letter-spacing: 0.5em;
+        }
+        
+        .footer-deco span { color: var(--neon-cyan); }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .data-constellation { grid-template-columns: 1fr; }
+            .timeline-track { grid-template-columns: 1fr; }
+            .matrix-grid { grid-template-columns: repeat(2, 1fr); }
+            .north-star-orbital { height: 350px; }
+            .orbital-ring:nth-child(1) { width: 200px; height: 200px; }
+            .orbital-ring:nth-child(2) { width: 260px; height: 260px; }
+            .orbital-ring:nth-child(3) { width: 320px; height: 320px; }
+            .orbital-ring:nth-child(4) { width: 380px; height: 380px; }
+            .central-core { width: 180px; height: 180px; }
+            .core-inner { width: 140px; height: 140px; }
+            .core-goal { font-size: 1.1rem; }
+            .core-amount { font-size: 1.8rem; }
+        }
+        
+        @media (max-width: 600px) {
+            .matrix-grid { grid-template-columns: 1fr; }
+            .stat-matrix { grid-template-columns: 1fr; }
+        }
+        
+        /* ===== SCROLL ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- WebGL Canvas for Neural Network Background -->
+    <canvas id="neural-canvas"></canvas>
+    
+    <!-- Scanlines Overlay -->
+    <div class="scanlines"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- SVG Connection Lines -->
+    <svg class="connection-lines" id="connections"></svg>
+    
+    <!-- Main Container -->
+    <div class="hologram-container">
+        <!-- Header -->
+        <header class="core-header">
+            <div class="timestamp" id="live-time">JAN 29, 2026 • 06:00 CST</div>
+            <h1 class="core-title">SPENCER'S NEURAL CORE</h1>
+            <div class="core-subtitle">QUINN DIRECTIVE INTERFACE v2.0</div>
+        </header>
+        
+        <!-- North Star - Central Orbital -->
+        <section class="north-star-orbital fade-in">
+            <div class="orbital-ring"></div>
+            <div class="orbital-ring"></div>
+            <div class="orbital-ring"></div>
+            <div class="orbital-ring"></div>
+            
+            <div class="central-core">
+                <div class="core-orb"></div>
+                <div class="core-inner"></div>
+                <div class="core-content">
+                    <div class="core-goal">⚠️ TRADING DEADLINE</div>
+                    <div class="core-amount">$1,000</div>
+                    <div class="core-deadline">JAN 31 — 2 DAYS LEFT</div>
+                </div>
+                <div class="core-progress">
+                    <div class="progress-bar-circular">
+                        <div class="progress-fill-circular" style="width: 58%;"></div>
+                    </div>
+                    <div class="progress-text">$580 BALANCE // 58% TO GOAL // CLAWDBOT RENEWAL AT STAKE</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Data Constellation -->
+        <div class="data-constellation">
+            <!-- Active Projects -->
+            <div class="data-node fade-in">
+                <div class="node-header">
+                    <div class="node-icon trading">🔥</div>
+                    <div class="node-title"><span>ACTIVE</span> PROJECTS</div>
+                </div>
+                <div class="node-content">
+                    <div class="project-pod">
+                        <div class="pod-icon trading">📈</div>
+                        <div class="pod-details">
+                            <div class="pod-name">Hyperliquid Trader</div>
+                            <div class="pod-status">HIP-3 Support Added — 50+ new perps (PID 3376)</div>
+                        </div>
+                        <span class="pod-badge live">LIVE</span>
+                    </div>
+                    <div class="project-pod">
+                        <div class="pod-icon agency">🏢</div>
+                        <div class="pod-details">
+                            <div class="pod-name">AI Automation Agency</div>
+                            <div class="pod-status">Building lead gen + audit tools tonight</div>
+                        </div>
+                        <span class="pod-badge active">ACTIVE</span>
+                    </div>
+                    <div class="project-pod">
+                        <div class="pod-icon quinn">🦊</div>
+                        <div class="pod-details">
+                            <div class="pod-name">Quinn / Clawdbot</div>
+                            <div class="pod-status">Active - overnight work running</div>
+                        </div>
+                        <span class="pod-badge active">ACTIVE</span>
+                    </div>
+                    <div class="project-pod">
+                        <div class="pod-icon client">📋</div>
+                        <div class="pod-details">
+                            <div class="pod-name">A4 Accounting Proposal</div>
+                            <div class="pod-status">SENT - new client prospect</div>
+                        </div>
+                        <span class="pod-badge active">SENT</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Today's Focus -->
+            <div class="data-node fade-in">
+                <div class="node-header">
+                    <div class="node-icon agency">✅</div>
+                    <div class="node-title"><span>TODAY'S</span> FOCUS</div>
+                </div>
+                <div class="node-content">
+                    <div class="focus-task">
+                        <div class="task-orb high"></div>
+                        <div>
+                            <div class="task-text">Fix trend filter to prevent HYPE-style losses</div>
+                            <div class="task-meta">CRITICAL — protect remaining $580</div>
+                        </div>
+                    </div>
+                    <div class="focus-task">
+                        <div class="task-orb high"></div>
+                        <div>
+                            <div class="task-text">Respond to Jenna re: Dext integration</div>
+                            <div class="task-meta">3 emails waiting from Ahsan's AI</div>
+                        </div>
+                    </div>
+                    <div class="focus-task">
+                        <div class="task-orb med"></div>
+                        <div>
+                            <div class="task-text">Monitor HIP-3 positions</div>
+                            <div class="task-meta">50+ new perps now available</div>
+                        </div>
+                    </div>
+                    <div class="focus-task">
+                        <div class="task-orb low"></div>
+                        <div>
+                            <div class="task-text">Wholesale real estate — restart with Terrasol</div>
+                            <div class="task-meta">Ideas backlog</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trading Stats -->
+            <div class="data-node fade-in">
+                <div class="node-header">
+                    <div class="node-icon trading">📈</div>
+                    <div class="node-title"><span>LIVE</span> TRADING</div>
+                </div>
+                <div class="node-content">
+                    <div class="stat-matrix">
+                        <div class="stat-cell">
+                            <div class="stat-value neutral">$580</div>
+                            <div class="stat-label">Account Value</div>
+                        </div>
+                        <div class="stat-cell">
+                            <div class="stat-value negative">-$420</div>
+                            <div class="stat-label">Gap to $1K Goal</div>
+                        </div>
+                        <div class="stat-cell">
+                            <div class="stat-value positive">50+</div>
+                            <div class="stat-label">HIP-3 Perps Added</div>
+                        </div>
+                        <div class="stat-cell">
+                            <div class="stat-value negative">2</div>
+                            <div class="stat-label">Days Left</div>
+                        </div>
+                    </div>
+                    <div class="trading-alert">
+                        <span class="alert-label">🚨 CRITICAL:</span> 2 days to hit $1,000 or lose Clawdbot subscription<br>
+                        <span class="alert-label">⚡ ACTION:</span> Fix trend filter to prevent HYPE-style losses
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ideas Backlog -->
+            <div class="data-node fade-in">
+                <div class="node-header">
+                    <div class="node-icon ideas">💡</div>
+                    <div class="node-title"><span>IDEAS</span> BACKLOG</div>
+                </div>
+                <div class="node-content">
+                    <div class="idea-fragment">
+                        <div class="idea-icon">📝</div>
+                        <div class="idea-content">
+                            <div class="idea-title">Lead List Generator Tool</div>
+                            <div class="idea-desc">Scrape & qualify real estate brokerages in SLC</div>
+                        </div>
+                        <span class="idea-cost">BUILDING</span>
+                    </div>
+                    <div class="idea-fragment">
+                        <div class="idea-icon">📊</div>
+                        <div class="idea-content">
+                            <div class="idea-title">Prospect Audit Calculator Tool</div>
+                            <div class="idea-desc">Interactive audit form with SKPS branding</div>
+                        </div>
+                        <span class="idea-cost">BUILDING</span>
+                    </div>
+                    <div class="idea-fragment">
+                        <div class="idea-icon">📄</div>
+                        <div class="idea-content">
+                            <div class="idea-title">Branded Proposal Template</div>
+                            <div class="idea-desc">HTML proposal template with SKPS styling</div>
+                        </div>
+                        <span class="idea-cost">DONE</span>
+                    </div>
+                    <div class="idea-fragment">
+                        <div class="idea-icon">🤖</div>
+                        <div class="idea-content">
+                            <div class="idea-title">AI Meeting Clone (Tavus)</div>
+                            <div class="idea-desc">Quinn avatar joins Zoom calls autonomously</div>
+                        </div>
+                        <span class="idea-cost">~$60/mo</span>
+                    </div>
+                    <div class="idea-fragment">
+                        <div class="idea-icon">🏠</div>
+                        <div class="idea-content">
+                            <div class="idea-title">Wholesale Real Estate Deals</div>
+                            <div class="idea-desc">Restart with Terrasol, get back in the game</div>
+                        </div>
+                        <span class="idea-cost">TBD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- People -->
+            <div class="data-node fade-in">
+                <div class="node-header">
+                    <div class="node-icon people">👥</div>
+                    <div class="node-title"><span>NETWORK</span> CONTACTS</div>
+                </div>
+                <div class="node-content">
+                    <div class="person-entity">
+                        <div class="person-avatar"><span>A</span></div>
+                        <div>
+                            <div class="person-name">Ahsan</div>
+                            <div class="person-role">Business partner • @snakezilla</div>
+                        </div>
+                    </div>
+                    <div class="person-entity">
+                        <div class="person-avatar"><span>J</span></div>
+                        <div>
+                            <div class="person-name">Jenna</div>
+                            <div class="person-role">Ahsan's AI • Dext integration</div>
+                        </div>
+                    </div>
+                    <div class="person-entity">
+                        <div class="person-avatar"><span>💕</span></div>
+                        <div>
+                            <div class="person-name">Girlfriend</div>
+                            <div class="person-role">Valentine's booked ❤️</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Personal -->
+            <div class="data-node fade-in">
+                <div class="node-header">
+                    <div class="node-icon personal">💝</div>
+                    <div class="node-title"><span>PERSONAL</span> EVENTS</div>
+                </div>
+                <div class="node-content">
+                    <div class="event-timeline">
+                        <div class="event-node">
+                            <div class="event-date">FEB 14 • 18:30</div>
+                            <div class="event-title">Valentine's Dinner</div>
+                            <div class="event-details">Copper Canyon Grillhouse<br>$69/person • CONFIRMED</div>
+                        </div>
+                        <div class="event-node">
+                            <div class="event-date">LOCATION</div>
+                            <div class="event-title">Salt Lake City, UT</div>
+                            <div class="event-details">America/Chicago timezone</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Roadmap Tunnel -->
+        <section class="roadmap-tunnel fade-in">
+            <div class="tunnel-header">🗺️ MISSION ROADMAP</div>
+            <div class="timeline-track">
+                <div class="timeline-phase now">
+                    <div class="phase-header now">
+                        <div class="phase-dot"></div>
+                        <div class="phase-title">NOW</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">AGENCY</div>
+                        <div class="phase-text">Lead list generator for SLC real estate</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">AGENCY</div>
+                        <div class="phase-text">Audit tool with SKPS branding</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">CLIENT</div>
+                        <div class="phase-text">A4 Accounting follow-up</div>
+                    </div>
+                </div>
+                <div class="timeline-phase soon">
+                    <div class="phase-header soon">
+                        <div class="phase-dot"></div>
+                        <div class="phase-title">SOON</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">TRADING</div>
+                        <div class="phase-text">Backtest trend filter</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">AGENCY</div>
+                        <div class="phase-text">Build outreach system</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">CLIENT</div>
+                        <div class="phase-text">Dashboard v2 iteration</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">AGENCY</div>
+                        <div class="phase-text">Dext integration research</div>
+                    </div>
+                </div>
+                <div class="timeline-phase later">
+                    <div class="phase-header later">
+                        <div class="phase-dot"></div>
+                        <div class="phase-title">LATER</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">TRADING</div>
+                        <div class="phase-text">Recover to $1,000+</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">AGENCY</div>
+                        <div class="phase-text">Close $5k revenue</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">QUINN</div>
+                        <div class="phase-text">Physical shrine build</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">CLIENT</div>
+                        <div class="phase-text">AI sales call grader</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- All Projects Matrix -->
+        <section class="projects-matrix fade-in">
+            <div class="matrix-header">📁 ALL SYSTEMS // DISCOVERED ON DISK</div>
+            <div class="matrix-grid">
+                <div class="matrix-cell">
+                    <div class="cell-name"><span class="cell-status active"></span>hyperliquid-telegram-agent</div>
+                    <div class="cell-path">Crypto trading bot</div>
+                </div>
+                <div class="matrix-cell">
+                    <div class="cell-name"><span class="cell-status active"></span>clawd</div>
+                    <div class="cell-path">Quinn's home base</div>
+                </div>
+                <div class="matrix-cell">
+                    <div class="cell-name"><span class="cell-status active"></span>clawd-democratized</div>
+                    <div class="cell-path">Open source Clawdbot</div>
+                </div>
+                <div class="matrix-cell">
+                    <div class="cell-name"><span class="cell-status dormant"></span>Solana DeFi Bot</div>
+                    <div class="cell-path">Crypto project</div>
+                </div>
+                <div class="matrix-cell">
+                    <div class="cell-name"><span class="cell-status dormant"></span>solar-prospector</div>
+                    <div class="cell-path">Solar energy tool</div>
+                </div>
+                <div class="matrix-cell">
+                    <div class="cell-name"><span class="cell-status dormant"></span>Solar Identifier</div>
+                    <div class="cell-path">Solar panel ID</div>
+                </div>
+                <div class="matrix-cell">
+                    <div class="cell-name"><span class="cell-status dormant"></span>earth-journey-portfolio</div>
+                    <div class="cell-path">Creative portfolio</div>
+                </div>
+                <div class="matrix-cell">
+                    <div class="cell-name"><span class="cell-status dormant"></span>Nulead Dashboard</div>
+                    <div class="cell-path">Client work</div>
+                </div>
+                <div class="matrix-cell">
+                    <div class="cell-name"><span class="cell-status dormant"></span>Cost Curve Engine</div>
+                    <div class="cell-path">Energy analysis</div>
+                </div>
+                <div class="matrix-cell">
+                    <div class="cell-name"><span class="cell-status dormant"></span>Xendee Clone</div>
+                    <div class="cell-path">Energy platform</div>
+                </div>
+                <div class="matrix-cell">
+                    <div class="cell-name"><span class="cell-status dormant"></span>indian-wedding-photographer</div>
+                    <div class="cell-path">Client site</div>
+                </div>
+                <div class="matrix-cell">
+                    <div class="cell-name"><span class="cell-status dormant"></span>bayhaven-redesign</div>
+                    <div class="cell-path">Client site</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer-deco">
+            <span>◈</span> QUINN NEURAL INTERFACE <span>◈</span><br>
+            UPDATED: JAN 29, 2026 12:22 AM CST
+        </footer>
+    </div>
+    
+    <script>
+        // ===== LIVE TIMESTAMP =====
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { 
+                hour12: false, 
+                hour: '2-digit', 
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('live-time').textContent = `SYSTEM ONLINE // ${timeStr}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+        
+        // ===== FLOATING PARTICLES =====
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['#00f5ff', '#ff00ff', '#00ff88', '#b347d9'];
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.boxShadow = `0 0 6px ${particle.style.background}`;
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+        
+        // ===== WEBGL NEURAL NETWORK =====
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let nodes = [];
+        let connections = [];
+        
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        
+        class Node {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+                this.color = ['#00f5ff', '#ff00ff', '#00ff88', '#b347d9'][Math.floor(Math.random() * 4)];
+            }
+            
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+            
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+        
+        function initNeuralNet() {
+            nodes = [];
+            for (let i = 0; i < 50; i++) {
+                nodes.push(new Node());
+            }
+        }
+        
+        function drawNeuralNet() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw connections
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    const dx = nodes[i].x - nodes[j].x;
+                    const dy = nodes[i].y - nodes[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.strokeStyle = `rgba(0, 245, 255, ${0.2 * (1 - dist / 150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            // Update and draw nodes
+            nodes.forEach(node => {
+                node.update();
+                node.draw();
+            });
+            
+            requestAnimationFrame(drawNeuralNet);
+        }
+        
+        resizeCanvas();
+        initNeuralNet();
+        drawNeuralNet();
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initNeuralNet();
+        });
+        
+        // ===== SCROLL ANIMATIONS =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        
+        // ===== MOUSE PARALLAX =====
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            
+            document.querySelectorAll('.data-node').forEach((node, index) => {
+                const factor = (index + 1) * 0.5;
+                node.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+            });
+        });
+        
+        // ===== 3D TILT ON CARDS =====
+        document.querySelectorAll('.data-node').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+        
+        // ===== TASK CHECKBOX INTERACTION =====
+        document.querySelectorAll('.task-orb').forEach(orb => {
+            orb.addEventListener('click', () => {
+                orb.classList.toggle('done');
+                const text = orb.nextElementSibling.querySelector('.task-text');
+                text.classList.toggle('done');
+            });
+        });
+        
+        // ===== PROJECT POD INTERACTIONS =====
+        document.querySelectorAll('.project-pod').forEach(pod => {
+            pod.addEventListener('click', () => {
+                pod.style.animation = 'none';
+                pod.offsetHeight; // Trigger reflow
+                pod.style.animation = 'glitch 0.3s';
+            });
+        });
+        
+        // ===== MATRIX CELL HOVER SOUND EFFECT (Visual only) =====
+        document.querySelectorAll('.matrix-cell').forEach(cell => {
+            cell.addEventListener('mouseenter', () => {
+                cell.style.borderColor = '#00f5ff';
+            });
+        });
+    </script>
+</body>
+</html>
