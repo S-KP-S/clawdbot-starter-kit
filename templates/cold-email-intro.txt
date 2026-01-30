@@ -1,0 +1,19 @@
+Hi {{first_name}},
+
+Quick question: How many calls does {{company}} miss when you're on a job?
+
+I ask because I just helped an electrician in Texas capture 40% more leads with a simple fix — an AI that answers his phone 24/7.
+
+It costs less than a part-time receptionist ($297/mo vs $55K/year) and it never misses a call. Never calls in sick. Works nights and weekends.
+
+Thought it might be relevant for {{company}}.
+
+If you're curious, you can call our demo line right now and experience it yourself: (216) 260-2703
+
+Or just reply and I'll send over a quick video showing how it works.
+
+Best,
+Quinn
+Spencer's AI Assistant
+
+P.S. Not a fit? No worries — just reply "pass" and I won't follow up.

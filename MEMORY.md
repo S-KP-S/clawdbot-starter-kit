@@ -10,6 +10,7 @@ Spencer wants me to be a **proactive autonomous employee**, not just a reactive 
 - Create PRs for review — **never push live**
 - He tests and commits every night before bed
 - Night shift scheduled: **11 PM CST nightly**
+- **For overnight/longer tasks:** Spin up sub-agents using Claude Code CLI (Sonnet) or Kimi CLI — don't block main session
 
 **How I should think:**
 - "What would make Spencer's life easier?"
@@ -20,16 +21,75 @@ Spencer wants me to be a **proactive autonomous employee**, not just a reactive 
 ---
 
 ## Spencer (high-signal context)
-- Spencer Strandholt (America/Chicago). Solopreneur working on solar/energy + crypto projects; also building an **AI automation agency / education business**.
-- Email (IMAP): **quinn.strandholt@gmail.com** (credentials stored in a local `.env` file).
+- Spencer Strandholt (America/Chicago)
+- **Location:** Salt Lake City, Utah
+- **Has a girlfriend** who likes to dress up for nice dinners
+- Solopreneur: solar/energy, crypto projects, AI automation agency/education business
+- Email (IMAP): **quinn.strandholt@gmail.com** (credentials in `.env`)
 
-## Current priorities
-- (2026-01-25) Spencer's near-term revenue target: **book qualified calls/leads and close $5k within 14 days**. Focus: build a repeatable outreach + sales system and ship fast, productized automations.
+---
+
+## Current Priorities
+
+### 🚨 Hyperliquid Trading (CRITICAL — Jan 2026)
+- **Goal:** $1,000 account balance by Jan 31st
+- **Stakes:** Clawdbot subscription renewal depends on this
+- **Status:** Autonomous trader running with HIP-3 perp support
+- Files: `hyperliquid-telegram-agent/` (full_trader.py, trade_tracker.py)
+- **Lesson learned:** Fix trend filter to prevent HYPE-style losses
+
+### Lead Generation for Cold Outreach
+- Built 5 lead lists (Real Estate, Plumbers, Electricians, Contractors, Roofers)
+- **⚠️ PREFERENCE:** OMIT leads without email addresses — Spencer focuses on cold email
+- Quality over quantity — no email = no lead
+
+### Dashboard v2 Client Project
+- Client prioritizing Dashboard v2 over AI sales call grader
+- New point system: Active agents (2pts), Calls (1pt), Offers (3pts), Signed contracts (5pts)
+- Track: Calls, talk time, offers, properties collected, agents activated, contracts signed
+- Payment: $500 for current work, then v2
+
+---
+
+## Upcoming Events
+
+### Valentine's Day Reservation ❤️
+- **Restaurant:** Copper Canyon Grillhouse and Tavern
+- **Date:** Saturday, February 14, 2026 at 6:30 PM
+- **Party size:** 2 (Spencer + girlfriend)
+- **Price:** $69/person (3-course dinner)
+- **Address:** 215 W South Temple, Salt Lake City, UT 84101
+- **Phone:** (801) 245-9333
+
+**Other SLC restaurants to remember:**
+- Log Haven — Romantic canyon setting, elk on menu
+- Tiburon Fine Dining — 4.9 stars, wild game specialty
+- Hoof & Vine — Same team as Tiburon, steakhouse
+
+---
+
+## Collaborators
+
+### Ahsan (Business Partner)
+- **Email:** eslamiahsan@gmail.com
+- **GitHub:** snakezilla
+- Uses macOS, into AI dev tooling
+- Working on Dext integration research (CSV bridge workflow)
+- **Jenna** (Ahsan's AI) — has sent emails checking on Dext integration status
+
+---
+
+## Technical Lessons
+- PowerShell commands via Bash have escaping issues → write to `.ps1` file and run with `-File`
+- Use `cmd /c` for simple Windows commands to avoid parsing problems
+- Skills library: 28 skills installed in `skills/` (marketing, CRO, dev-loop, etc.)
+
+---
 
 ## Shelved / Future Projects
 
-### AI Meeting Clone (2026-01-25)
-**Goal:** Have an AI avatar of Spencer join Zoom meetings autonomously — listen, respond when prompted, or just be present on mute.
+### AI Meeting Clone
+**Goal:** AI avatar of Spencer joins Zoom meetings autonomously
 
 **Best path:** Tavus Conversational Video Interface
 - **Starter plan:** $59/mo + $0.37/min overage (100 mins included)
@@ -42,14 +102,14 @@ Spencer wants me to be a **proactive autonomous employee**, not just a reactive 
 3. Upload at platform.tavus.io or via API
 4. Wire CVI to Zoom via WebRTC
 
-**DIY alternative:** Recall.ai (meeting bot) + HeyGen (avatar) + Deepgram (transcription) + ElevenLabs (TTS) + Claude (brain) = ~$0.29/min but 40-80 hrs dev time.
+**DIY alternative:** Recall.ai + HeyGen + Deepgram + ElevenLabs + Claude = ~$0.29/min but 40-80 hrs dev time.
 
 **Docs:** https://docs.tavus.io/sections/replica/replica-training
 
 ---
 
-### Quinn Physical Embodiment / "Shrine" (2026-01-28)
-**Goal:** Give Quinn a dedicated physical presence in Spencer's space — always-on, always watching, always connected.
+### Quinn Physical Embodiment / "Shrine"
+**Goal:** Give Quinn a dedicated physical presence — always-on, always watching, always connected.
 
 **Recommended starter build (~$150):**
 | Part | Cost |
@@ -74,4 +134,8 @@ Spencer wants me to be a **proactive autonomous employee**, not just a reactive 
 4. **Level 4:** Humanoid-ish / robot dog like Unitree Go2 (~$500-2000)
 5. **Level 5:** Full android embodiment (future/research-grade)
 
-**Next steps when ready:** Generate full BOM and software stack
+---
+
+### Wholesale Real Estate Deals
+- Restart with Terrasol, get back in the game
+- Added to backlog 2026-01-29

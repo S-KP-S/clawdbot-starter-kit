@@ -1,0 +1,19 @@
+Hi {{first_name}},
+
+Following up on my note about the AI phone system.
+
+Just wanted to share some quick numbers from businesses like {{company}}:
+
+• 62% of calls to small businesses go unanswered
+• Average value of a missed call: $150-500
+• Time to respond matters: 78% of customers buy from whoever responds first
+
+The fix is pretty simple: an AI that picks up every call, qualifies the lead, and books the appointment.
+
+Would a 15-minute call be worth it to see if this could work for you?
+
+Here's my calendar: https://calendly.com/spencerkstrandholt/tour
+
+Or call our AI right now to hear it in action: (216) 260-2703
+
+Quinn
