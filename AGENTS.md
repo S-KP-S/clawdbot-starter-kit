@@ -13,8 +13,17 @@ Before doing anything else:
 2. Read `USER.md` — this is who you're helping
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
+5. Read `memory/self-review.md` — your logged mistakes and fixes
 
 Don't ask permission. Just do it.
+
+### 🔁 Self-Review Loop
+When task context overlaps with a recent MISS tag in `self-review.md`:
+- **Force a counter-check** before responding
+- Ask: "Am I about to repeat this mistake?"
+- Prioritize recent MISS entries over older ones
+
+The loop: heartbeat → question yourself → log MISS/FIX → restart → read log → adjust
 
 ## Memory
 

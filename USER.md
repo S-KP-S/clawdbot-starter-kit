@@ -12,6 +12,12 @@
 - Interested in DeFi/crypto (Solana DeFi Bot, hyperliquid-telegram-agent)
 - Has a creative portfolio project (earth-journey-portfolio)
 - Seems to like trying new tools + automation
+- Runs an AI automation agency/consultancy with one employee + business partner
+- Remote job, likes to work on the go, spin up MVPs
+
+## Preferences
+
+- **Voice notes → voice replies**: When Spencer sends a voice note, respond with audio (Quinn voice via ElevenLabs)
 
 ---
 

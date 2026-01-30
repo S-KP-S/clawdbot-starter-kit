@@ -2,6 +2,191 @@
 
 Skills define *how* tools work. This file is for *your* specifics — the stuff that's unique to your setup.
 
+## GoHighLevel (GHL) CRM
+- **Location ID:** Ky4b8wjuurnFCJfVb7Gl
+- **API Key:** pit-e0f74906-ed71-4548-a6fc-18b54ecdba4c
+- **Base URL (v2):** https://services.leadconnectorhq.com
+- **Docs:** https://highlevel.stoplight.io/docs/integrations
+
+### Common Endpoints (v2 API)
+```powershell
+# List contacts (paginated)
+curl.exe -s "https://services.leadconnectorhq.com/contacts/?locationId=Ky4b8wjuurnFCJfVb7Gl&limit=20" `
+  -H "Authorization: Bearer pit-e0f74906-ed71-4548-a6fc-18b54ecdba4c" `
+  -H "Version: 2021-07-28"
+
+# Get single contact
+curl.exe -s "https://services.leadconnectorhq.com/contacts/{contactId}" `
+  -H "Authorization: Bearer pit-e0f74906-ed71-4548-a6fc-18b54ecdba4c" `
+  -H "Version: 2021-07-28"
+
+# Update contact (add/replace tags)
+curl.exe -X PUT "https://services.leadconnectorhq.com/contacts/{contactId}" `
+  -H "Authorization: Bearer pit-e0f74906-ed71-4548-a6fc-18b54ecdba4c" `
+  -H "Version: 2021-07-28" `
+  -H "Content-Type: application/json" `
+  -d '{"tags":["tag1","tag2"]}'
+
+# Add tag to contact (without removing existing)
+curl.exe -X POST "https://services.leadconnectorhq.com/contacts/{contactId}/tags" `
+  -H "Authorization: Bearer pit-e0f74906-ed71-4548-a6fc-18b54ecdba4c" `
+  -H "Version: 2021-07-28" `
+  -H "Content-Type: application/json" `
+  -d '{"tags":["new-tag"]}'
+
+# Search contacts by email/phone
+curl.exe -s "https://services.leadconnectorhq.com/contacts/?locationId=Ky4b8wjuurnFCJfVb7Gl&query=email@example.com" `
+  -H "Authorization: Bearer pit-e0f74906-ed71-4548-a6fc-18b54ecdba4c" `
+  -H "Version: 2021-07-28"
+```
+
+## 🤖 Coding Agent Hierarchy
+
+**Spencer's Preference:** Use **Kimi CLI** for frontend work.
+
+**Main Stack** (use in order, overflow on failure/limits):
+
+| Priority | Agent | Model | Command |
+|----------|-------|-------|---------|
+| 1️⃣ | **Codex CLI** | OpenAI Codex | `codex -a auto "prompt"` |
+| 2️⃣ | **Kilo Code** | Kimi K2.5 (FREE) | `kilocode --auto --yolo -m code "prompt"` |
+| 3️⃣ | **Kimi CLI** | Kimi K2.5 (paid) | `& "C:\Users\spenc\.local\bin\kimi" -y -p "prompt"` |
+| 4️⃣ | **Claude Code** | Sonnet | `claude -p "prompt" --allowedTools Edit,Write,Bash` |
+| 5️⃣ | **Claude Code** | **Opus 4.5** 🔥 | `claude -p "prompt" --model claude-opus-4-5-20251101 --allowedTools Edit,Write,Bash` |
+
+**⚡ Speed Demon (Parallel Option):**
+| Agent | Model | Use Case |
+|-------|-------|----------|
+| **Groq** | LLaMA 3.3 70B | Quick answers, fast explanations, "good enough" responses |
+
+**Rules:**
+- Start with Codex for coding tasks
+- If Codex hits rate limits or fails → Kimi CLI
+- If Kimi fails → Kilo Code
+- If errors persist → Claude Code (Sonnet) for debugging/recovery
+- If all else fails → **Opus 4.5** (the beast) for nuclear option
+- **Groq** → Use anytime for fast parallel answers or quick queries
+
+---
+
+## ⚡ Groq (Speed Demon - Parallel Option)
+- **API Key:** Saved to `.secrets/groq-api-key.txt`
+- **Models:** llama-3.3-70b-versatile (primary), mixtral-8x7b, gemma2-9b
+- **Speed:** 500+ tokens/sec (10x faster than typical APIs)
+- **Use for:** Quick answers, fast code explanations, batch processing, brainstorming
+
+**When to use Groq:**
+- Need a fast "good enough" answer
+- Simple code questions ("what does this do?")
+- Text processing, summarization
+- Running parallel to main agent for speed comparison
+
+```powershell
+# Example curl call
+$env:GROQ_API_KEY = Get-Content "C:\Users\spenc\clawd\.secrets\groq-api-key.txt"
+curl.exe -s "https://api.groq.com/openai/v1/chat/completions" `
+  -H "Authorization: Bearer $env:GROQ_API_KEY" `
+  -H "Content-Type: application/json" `
+  -d '{"model":"llama-3.3-70b-versatile","messages":[{"role":"user","content":"Hello"}]}'
+```
+
+---
+
+## Kimi CLI (Moonshot AI Agent)
+- **Path:** `C:\Users\spenc\.local\bin\kimi`
+- **Model:** kimi-k2.5 (kimi-for-coding)
+- **Docs:** https://moonshotai.github.io/kimi-cli/
+
+### Usage
+```powershell
+# Interactive mode
+& "C:\Users\spenc\.local\bin\kimi"
+
+# One-shot with prompt (auto-approve)
+& "C:\Users\spenc\.local\bin\kimi" -y -p "Your prompt here"
+
+# Quiet mode (just final output)
+& "C:\Users\spenc\.local\bin\kimi" --quiet -p "Your prompt here"
+
+# With specific working directory
+& "C:\Users\spenc\.local\bin\kimi" -w "C:\path\to\project" -y -p "Build something"
+```
+
+### Key Flags
+| Flag | Effect |
+|------|--------|
+| `-y, --yolo` | Auto-approve all actions |
+| `-p, --prompt` | Pass prompt directly |
+| `--quiet` | Non-interactive, final message only |
+| `-w, --work-dir` | Set working directory |
+| `-C, --continue` | Continue previous session |
+| `--thinking` | Enable thinking mode |
+
+---
+
+## Kilo Code CLI (Frontend Sub-Agent)
+- **Model:** Moonshot Kimi K 2.5 (free tier, good at frontend)
+- **Role:** First-pass frontend work — React components, CSS, UI polish
+- **Command:** `kilocode --auto --yolo -w <workdir> -m code "<prompt>"`
+
+### Usage Pattern
+```powershell
+# Create test workspace with git
+$dir = "C:\Users\spenc\clawd\tmp\kilo-$(Get-Date -Format 'HHmmss')"
+New-Item -ItemType Directory -Path $dir -Force
+Set-Location $dir
+git init
+
+# Run Kilo Code in background
+kilocode --auto --yolo -w $dir -m code "Build [component description]"
+```
+
+### Flags
+| Flag | Effect |
+|------|--------|
+| `--auto` | Autonomous mode (non-interactive) |
+| `--yolo` | Auto-approve all tool permissions |
+| `-w <path>` | Workspace directory |
+| `-m <mode>` | Mode: code, architect, ask, debug, orchestrator |
+| `-P <provider>` | Provider ID |
+| `-M <model>` | Override model |
+
+### Notes
+- Creates todo lists and checkpoints automatically
+- Will attempt browser testing (downloads Chromium ~300MB if needed)
+- Good for: React components, CSS transitions, UI polish, standalone HTML demos
+- Tested: Built a 455-line dark mode toggle with glassmorphism, animations, accessibility
+
+## Grok for X/Twitter (via OpenRouter)
+- **Model:** `x-ai/grok-code-fast-1`
+- **Use for:** Twitter/X trending topics, searches, sentiment, real-time X data
+- **API:** OpenRouter (key in Clawdbot config)
+
+### Usage
+```powershell
+# Write query to file
+@'
+{
+  "model": "x-ai/grok-code-fast-1",
+  "messages": [{"role": "user", "content": "YOUR TWITTER QUERY HERE"}]
+}
+'@ | Out-File -Encoding utf8 C:\Users\spenc\clawd\tmp\grok-request.json
+
+# Call Grok
+curl.exe -s "https://openrouter.ai/api/v1/chat/completions" `
+  -H "Authorization: Bearer $env:OPENROUTER_API_KEY" `
+  -H "Content-Type: application/json" `
+  -d "@C:\Users\spenc\clawd\tmp\grok-request.json"
+```
+
+### When Spencer asks about Twitter/X:
+- Trending topics → Grok
+- What's happening on X → Grok
+- Sentiment on a topic → Grok
+- Search Twitter for [topic] → Grok
+
+---
+
 ## Vapi (Voice AI)
 - **Private API Key:** be0f4153-6233-4fc8-94b8-8fe13a321dc2
 - **Phone Number ID:** 8a3a8ec3-6f30-42ed-9483-fdd209b3020f
