@@ -1,0 +1,277 @@
+{
+  "timestamp": "2026-01-26T20:45:59.117540",
+  "markets": [
+    {
+      "token_id": "93592949212798121127213117304912625505836768562433217537850469496310204567695",
+      "condition_id": "0x19ee98e348c0ccb341d1b9566fa14521566e9b2ea7aed34dc407a0ec56be36a2",
+      "question": "MicroStrategy sells any Bitcoin in 2025?",
+      "outcome": "YES",
+      "price": 0.0,
+      "volume": 17976157.529867,
+      "end_date": "2025-12-31T12:00:00Z",
+      "event_title": "MicroStrategy sells any Bitcoin by ___ ?"
+    },
+    {
+      "token_id": "3074539347152748632858978545166555332546941892131779352477699494423276162345",
+      "condition_id": "0x19ee98e348c0ccb341d1b9566fa14521566e9b2ea7aed34dc407a0ec56be36a2",
+      "question": "MicroStrategy sells any Bitcoin in 2025?",
+      "outcome": "NO",
+      "price": 1.0,
+      "volume": 17976157.529867,
+      "end_date": "2025-12-31T12:00:00Z",
+      "event_title": "MicroStrategy sells any Bitcoin by ___ ?"
+    },
+    {
+      "token_id": "111128191581505463501777127559667396812474366956707382672202929745167742497287",
+      "condition_id": "0x8213d395e079614d6c4d7f4cbb9be9337ab51648a21cc2a334ae8f1966d164b4",
+      "question": "MicroStrategy sells any Bitcoin by December 31, 2026?",
+      "outcome": "YES",
+      "price": 0.225,
+      "volume": 125407.198063,
+      "end_date": "2026-07-01T04:00:00Z",
+      "event_title": "MicroStrategy sells any Bitcoin by ___ ?"
+    },
+    {
+      "token_id": "99807503632459517030616292055983105381849115736225256331133222076990620978808",
+      "condition_id": "0x8213d395e079614d6c4d7f4cbb9be9337ab51648a21cc2a334ae8f1966d164b4",
+      "question": "MicroStrategy sells any Bitcoin by December 31, 2026?",
+      "outcome": "NO",
+      "price": 0.775,
+      "volume": 125407.198063,
+      "end_date": "2026-07-01T04:00:00Z",
+      "event_title": "MicroStrategy sells any Bitcoin by ___ ?"
+    },
+    {
+      "token_id": "108547978327958467449318042977006580876058560639743186491243488736783119648127",
+      "condition_id": "0x9a4db724246b51cbfbc8000dbbd6b54d72b057767c3690e63d940b26d78c6cb0",
+      "question": "MicroStrategy sells any Bitcoin by March 31, 2026?",
+      "outcome": "YES",
+      "price": 0.0385,
+      "volume": 1009314.458413,
+      "end_date": "",
+      "event_title": "MicroStrategy sells any Bitcoin by ___ ?"
+    },
+    {
+      "token_id": "61476326573463890939120700176570456436619008823217970387484180237661307640203",
+      "condition_id": "0x9a4db724246b51cbfbc8000dbbd6b54d72b057767c3690e63d940b26d78c6cb0",
+      "question": "MicroStrategy sells any Bitcoin by March 31, 2026?",
+      "outcome": "NO",
+      "price": 0.9615,
+      "volume": 1009314.458413,
+      "end_date": "",
+      "event_title": "MicroStrategy sells any Bitcoin by ___ ?"
+    },
+    {
+      "token_id": "110251828161543119357013227499774714771527179764174739487025581227481937033858",
+      "condition_id": "0x8e7a03cb1970e2ad6533b01892403516b6b3f5b5fa90ed7d104c28b27e40ba00",
+      "question": "MicroStrategy sells any Bitcoin by June 30, 2026?",
+      "outcome": "YES",
+      "price": 0.09,
+      "volume": 423526.813549,
+      "end_date": "2026-07-01T04:00:00Z",
+      "event_title": "MicroStrategy sells any Bitcoin by ___ ?"
+    },
+    {
+      "token_id": "65176388692130651396848427090788038285140833850265294793449655516920659740141",
+      "condition_id": "0x8e7a03cb1970e2ad6533b01892403516b6b3f5b5fa90ed7d104c28b27e40ba00",
+      "question": "MicroStrategy sells any Bitcoin by June 30, 2026?",
+      "outcome": "NO",
+      "price": 0.91,
+      "volume": 423526.813549,
+      "end_date": "2026-07-01T04:00:00Z",
+      "event_title": "MicroStrategy sells any Bitcoin by ___ ?"
+    },
+    {
+      "token_id": "46321217963489189592059971462784666798728187359212266717273567726516419208431",
+      "condition_id": "0x5478c62494cb4aeffe77ea23437721eb6d5e50d7b6f668242479e50b09d06979",
+      "question": "Will Bitcoin hit $80k or $150k first?",
+      "outcome": "YES",
+      "price": 0.8345,
+      "volume": 1044633.73738,
+      "end_date": "2027-01-01T04:00:00Z",
+      "event_title": "Will Bitcoin hit $80k or $150k first?"
+    },
+    {
+      "token_id": "4063026341038963817025555413567055151736430923249962548720332650506856241704",
+      "condition_id": "0x5478c62494cb4aeffe77ea23437721eb6d5e50d7b6f668242479e50b09d06979",
+      "question": "Will Bitcoin hit $80k or $150k first?",
+      "outcome": "NO",
+      "price": 0.1655,
+      "volume": 1044633.73738,
+      "end_date": "2027-01-01T04:00:00Z",
+      "event_title": "Will Bitcoin hit $80k or $150k first?"
+    },
+    {
+      "token_id": "45438797913102633064383001106517686274645969710370719545649954176250131739243",
+      "condition_id": "0xe85aa009b1296e6cb66571d2f1e33db3a91939711dd073486ef1b8f2a53ad1a8",
+      "question": "Will Bitcoin hit $150k by September 30?",
+      "outcome": "YES",
+      "price": 0.0,
+      "volume": 778900.335643,
+      "end_date": "2025-10-01T04:00:00Z",
+      "event_title": "When will Bitcoin hit $150k?"
+    },
+    {
+      "token_id": "3706912208194343773849417614386506880440846478227693664173634276917611780828",
+      "condition_id": "0xe85aa009b1296e6cb66571d2f1e33db3a91939711dd073486ef1b8f2a53ad1a8",
+      "question": "Will Bitcoin hit $150k by September 30?",
+      "outcome": "NO",
+      "price": 1.0,
+      "volume": 778900.335643,
+      "end_date": "2025-10-01T04:00:00Z",
+      "event_title": "When will Bitcoin hit $150k?"
+    },
+    {
+      "token_id": "51345161306887002552702771044155490460507594693596558109007253177086704498541",
+      "condition_id": "0x0cd467df4030e7da99133ae20665f0905e6a9cbc6706d11c87712730a0434170",
+      "question": "Will Bitcoin hit $150k by December 31?",
+      "outcome": "YES",
+      "price": 0.0,
+      "volume": 1555669.585882,
+      "end_date": "2026-01-01T04:00:00Z",
+      "event_title": "When will Bitcoin hit $150k?"
+    },
+    {
+      "token_id": "66868216886403082820759431293138546785458727678004646516838062486050421464371",
+      "condition_id": "0x0cd467df4030e7da99133ae20665f0905e6a9cbc6706d11c87712730a0434170",
+      "question": "Will Bitcoin hit $150k by December 31?",
+      "outcome": "NO",
+      "price": 1.0,
+      "volume": 1555669.585882,
+      "end_date": "2026-01-01T04:00:00Z",
+      "event_title": "When will Bitcoin hit $150k?"
+    },
+    {
+      "token_id": "46866868857194367945413771860582064655745092128562966218540356888709464260149",
+      "condition_id": "0xe857d6cd180acdb314dd38e583e625172407fa83d54156c78679e601b312d068",
+      "question": "Will Bitcoin hit $150k by March 31, 2026?",
+      "outcome": "YES",
+      "price": 0.026,
+      "volume": 195367.641641,
+      "end_date": "2026-04-01T04:00:00Z",
+      "event_title": "When will Bitcoin hit $150k?"
+    },
+    {
+      "token_id": "60813700210650265030095330536872262773206509817006423823871227216046493542827",
+      "condition_id": "0xe857d6cd180acdb314dd38e583e625172407fa83d54156c78679e601b312d068",
+      "question": "Will Bitcoin hit $150k by March 31, 2026?",
+      "outcome": "NO",
+      "price": 0.974,
+      "volume": 195367.641641,
+      "end_date": "2026-04-01T04:00:00Z",
+      "event_title": "When will Bitcoin hit $150k?"
+    },
+    {
+      "token_id": "13915689317269078219168496739008737517740566192006337297676041270492637394586",
+      "condition_id": "0xa0f4c4924ea1a8b410b4ce821c2a9955fad21a1b19bdcfde90816732278b3dd5",
+      "question": "Will Bitcoin hit $150k by June 30, 2026?",
+      "outcome": "YES",
+      "price": 0.12,
+      "volume": 261484.573055,
+      "end_date": "2026-07-01T04:00:00Z",
+      "event_title": "When will Bitcoin hit $150k?"
+    },
+    {
+      "token_id": "13290642914521189871602119663452054126359842904805799115978921503195267156991",
+      "condition_id": "0xa0f4c4924ea1a8b410b4ce821c2a9955fad21a1b19bdcfde90816732278b3dd5",
+      "question": "Will Bitcoin hit $150k by June 30, 2026?",
+      "outcome": "NO",
+      "price": 0.88,
+      "volume": 261484.573055,
+      "end_date": "2026-07-01T04:00:00Z",
+      "event_title": "When will Bitcoin hit $150k?"
+    },
+    {
+      "token_id": "93694900555669388759405753550770573998169287228984912881955464376232163096213",
+      "condition_id": "0x02deb9538f5c123373adaa4ee6217b01745f1662bc902e46ac92f3fe6f8741e8",
+      "question": "Will Bitcoin hit $150k by December 31, 2026?",
+      "outcome": "YES",
+      "price": 0.23,
+      "volume": 170521.617541,
+      "end_date": "2027-01-01T04:00:00Z",
+      "event_title": "When will Bitcoin hit $150k?"
+    },
+    {
+      "token_id": "55119388124180116303253993098894090042427725500010038140578121972388485050538",
+      "condition_id": "0x02deb9538f5c123373adaa4ee6217b01745f1662bc902e46ac92f3fe6f8741e8",
+      "question": "Will Bitcoin hit $150k by December 31, 2026?",
+      "outcome": "NO",
+      "price": 0.77,
+      "volume": 170521.617541,
+      "end_date": "2027-01-01T04:00:00Z",
+      "event_title": "When will Bitcoin hit $150k?"
+    }
+  ],
+  "sentiment": {
+    "bullish_count": 0,
+    "bearish_count": 0,
+    "neutral_count": 0,
+    "total_tweets": 0,
+    "sentiment_score": 0.0,
+    "key_signals": []
+  },
+  "news": {
+    "total_articles": 15,
+    "bullish_headlines": 4,
+    "bearish_headlines": 1,
+    "breaking_news": [],
+    "top_headlines": [
+      {
+        "title": "Silver nears $1 billion in volume on Hyperliquid as bitcoin remains frozen: Asia Morning Briefing",
+        "source": "coindesk",
+        "url": "https://www.coindesk.com/markets/2026/01/27/silver-nears-usd1b-in-volume-on-hyperliquid-as-btc-remains-frozen-asia-morning-briefing"
+      },
+      {
+        "title": "Korean prosecutors lost 320 BTC in staggering security lapse: Inside the $29 million phishing fiasco",
+        "source": "bitcoinworld",
+        "url": "https://bitcoinworld.co.in/south-korea-prosecutors-lost-bitcoin/"
+      },
+      {
+        "title": "Bitcoin Whales Are Back: 104K BTC Added As $1M Transfers Surge",
+        "source": "newsbtc",
+        "url": "https://www.newsbtc.com/news/bitcoin/bitcoin-whales-are-back-104k-btc-added-as-1m-transfers-surge/"
+      },
+      {
+        "title": "Bloomberg: XRP Likely To Breach Crucial Support. Here\u2019s The Implication",
+        "source": "timestabloid",
+        "url": "https://timestabloid.com/bloomberg-xrp-likely-to-breach-crucial-support-heres-the-implication/"
+      },
+      {
+        "title": "Crypto Capital Rotates To Metals: Silver Hits $100, Gold Touches $5K While Bitcoin ETFs Bleed",
+        "source": "bitcoinist",
+        "url": "https://bitcoinist.com/crypto-capital-rotates-to-metals-silver-hits-100/"
+      },
+      {
+        "title": "Altcoin Season Index Surges: A Hopeful Signal for Crypto Market Rotation in 2025",
+        "source": "bitcoinworld",
+        "url": "https://bitcoinworld.co.in/altcoin-season-index-rises-signal/"
+      },
+      {
+        "title": "Stablecoin Market Cap Plummets $2.2B as Frightened Investors Rush to Gold",
+        "source": "bitcoinworld",
+        "url": "https://bitcoinworld.co.in/stablecoin-market-cap-falls-gold/"
+      },
+      {
+        "title": "Crypto Fear & Greed Index Surges, Signaling a Hopeful Shift from Extreme Fear",
+        "source": "bitcoinworld",
+        "url": "https://bitcoinworld.co.in/crypto-fear-greed-index-rises-29/"
+      },
+      {
+        "title": "Stablecoin market fall shows flight to gold, not Bitcoin: Santiment",
+        "source": "cointelegraph",
+        "url": "https://cointelegraph.com/news/stablecoin-market-fall-shows-flight-to-gold-not-bitcoin-santiment?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound"
+      },
+      {
+        "title": "Trump-Backed WLFI Snaps Up 2,868 ETH, Sells $8M WBTC",
+        "source": "newsbtc",
+        "url": "https://www.newsbtc.com/altcoin/trump-backed-wlfi-snaps-up-2868-eth-sells-8m-wbtc/"
+      }
+    ]
+  },
+  "summary": {
+    "total_crypto_markets": 364,
+    "btc_markets": 26,
+    "sentiment_score": 0.0,
+    "news_bias": 0.2
+  }
+}

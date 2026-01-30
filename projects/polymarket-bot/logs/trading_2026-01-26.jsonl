@@ -1,0 +1,30 @@
+{"timestamp": "2026-01-26T20:09:30.798816", "level": "error", "category": "decision", "message": "No AI provider configured"}
+{"timestamp": "2026-01-26T20:09:30.799995", "level": "info", "category": "trader", "message": "Initializing Polymarket Trading Bot..."}
+{"timestamp": "2026-01-26T20:09:30.800563", "level": "info", "category": "polymarket", "message": "Connected (read-only)"}
+{"timestamp": "2026-01-26T20:09:30.801031", "level": "success", "category": "trader", "message": "Initialization complete"}
+{"timestamp": "2026-01-26T20:09:30.801505", "level": "info", "category": "trader", "message": "Trading enabled: False"}
+{"timestamp": "2026-01-26T20:09:30.802495", "level": "info", "category": "trader", "message": "Max position size: $25.0"}
+{"timestamp": "2026-01-26T20:09:31.334580", "level": "info", "category": "polymarket", "message": "Found 0 BTC markets"}
+{"timestamp": "2026-01-26T20:11:19.927166", "level": "error", "category": "decision", "message": "No AI provider configured"}
+{"timestamp": "2026-01-26T20:11:19.928173", "level": "info", "category": "trader", "message": "Initializing Polymarket Trading Bot..."}
+{"timestamp": "2026-01-26T20:11:19.928592", "level": "info", "category": "polymarket", "message": "Connected (read-only)"}
+{"timestamp": "2026-01-26T20:11:19.928938", "level": "success", "category": "trader", "message": "Initialization complete"}
+{"timestamp": "2026-01-26T20:11:19.929370", "level": "info", "category": "trader", "message": "Trading enabled: False"}
+{"timestamp": "2026-01-26T20:11:19.930062", "level": "info", "category": "trader", "message": "Max position size: $25.0"}
+{"timestamp": "2026-01-26T20:11:20.814150", "level": "info", "category": "polymarket", "message": "Found 364 crypto market outcomes"}
+{"timestamp": "2026-01-26T20:11:20.829489", "level": "info", "category": "polymarket", "message": "Found 26 BTC-specific markets"}
+{"timestamp": "2026-01-26T20:45:52.081332", "level": "info", "category": "intel", "message": "Starting intelligence gathering..."}
+{"timestamp": "2026-01-26T20:45:52.082083", "level": "info", "category": "polymarket", "message": "Connected (read-only)"}
+{"timestamp": "2026-01-26T20:45:52.955958", "level": "info", "category": "polymarket", "message": "Found 364 crypto market outcomes"}
+{"timestamp": "2026-01-26T20:45:52.965420", "level": "info", "category": "intel", "message": "Found 364 crypto market outcomes"}
+{"timestamp": "2026-01-26T20:45:52.966828", "level": "info", "category": "sentiment", "message": "Starting BTC sentiment analysis"}
+{"timestamp": "2026-01-26T20:45:53.371388", "level": "warn", "category": "sentiment", "message": "Bird search failed: None"}
+{"timestamp": "2026-01-26T20:45:53.663748", "level": "warn", "category": "sentiment", "message": "Bird search failed: None"}
+{"timestamp": "2026-01-26T20:45:53.959359", "level": "warn", "category": "sentiment", "message": "Bird search failed: None"}
+{"timestamp": "2026-01-26T20:45:54.262246", "level": "warn", "category": "sentiment", "message": "Bird search failed: None"}
+{"timestamp": "2026-01-26T20:45:54.263776", "level": "info", "category": "sentiment", "message": "Analysis complete: score=0.000, tweets=0"}
+{"timestamp": "2026-01-26T20:45:54.264349", "level": "info", "category": "news", "message": "Starting news aggregation"}
+{"timestamp": "2026-01-26T20:45:59.112695", "level": "info", "category": "news", "message": "Fetched 15 articles from CryptoCompare"}
+{"timestamp": "2026-01-26T20:45:59.115974", "level": "warn", "category": "news", "message": "feedparser not installed - skipping CoinDesk"}
+{"timestamp": "2026-01-26T20:45:59.116938", "level": "info", "category": "news", "message": "Aggregated 15 items, 4 bullish, 1 bearish"}
+{"timestamp": "2026-01-26T20:45:59.119824", "level": "info", "category": "intel", "message": "Report saved to C:\\Users\\spenc\\clawd\\projects\\polymarket-bot\\data\\latest_intel.json"}
