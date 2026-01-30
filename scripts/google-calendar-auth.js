@@ -8,11 +8,15 @@ const { exec } = require('child_process');
 const KEYS_PATH = path.join(process.env.USERPROFILE, '.config', 'mcp-gdrive', 'gcp-oauth.keys.json');
 const TOKENS_PATH = path.join(process.env.USERPROFILE, '.config', 'google-calendar', 'tokens.json');
 
-// Scopes - Calendar + Meet
+// Scopes - Calendar + Gmail + Sheets
 const SCOPES = [
   'https://www.googleapis.com/auth/calendar',
   'https://www.googleapis.com/auth/calendar.events',
   'https://www.googleapis.com/auth/calendar.readonly',
+  'https://www.googleapis.com/auth/gmail.readonly',
+  'https://www.googleapis.com/auth/gmail.send',
+  'https://www.googleapis.com/auth/gmail.modify',
+  'https://www.googleapis.com/auth/spreadsheets',
 ];
 
 async function main() {
