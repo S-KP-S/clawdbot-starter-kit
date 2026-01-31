@@ -16,9 +16,9 @@ FIX: how to avoid next time
 Only log if there's a genuine MISS. Don't fabricate entries.
 
 ## Email Check
-Check Quinn's inbox for new/unread emails:
+Check Quinn's inbox for new emails:
 ```
-node scripts/check-email.js 5 UNSEEN
+node scripts/agentmail-check.js 5
 ```
 
 If there are new emails worth flagging (not spam/promotions), summarize and alert Spencer.
