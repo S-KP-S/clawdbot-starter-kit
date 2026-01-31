@@ -2,7 +2,7 @@
 
 Skills define *how* tools work. This file is for *your* specifics — the stuff that's unique to your setup.
 
-## GoHighLevel (GHL) CRM
+## GoHighLevel (GHL) CRM For TerraSol (Land Wholesaling)
 - **Location ID:** Ky4b8wjuurnFCJfVb7Gl
 - **API Key:** pit-e0f74906-ed71-4548-a6fc-18b54ecdba4c
 - **Base URL (v2):** https://services.leadconnectorhq.com
@@ -181,6 +181,7 @@ curl.exe -s "https://openrouter.ai/api/v1/chat/completions" `
 
 ### When Spencer asks about Twitter/X:
 - Trending topics → Grok
+- Use openrouter grok 4.1
 - What's happening on X → Grok
 - Sentiment on a topic → Grok
 - Search Twitter for [topic] → Grok
@@ -340,12 +341,30 @@ node scripts/gcal.js delete <eventId> [calendarId]
 - `notify` — boolean, sends invites to attendees
 - `calendarId` — defaults to 'primary'
 
-## Email (via Gmail)
-- **Account:** quinn.strandholt@gmail.com
-- **From Name:** "Quinn - Spencer's Assistant"
-- **Script:** `node scripts/send-email.js <to> <subject> <body>`
-- **Use case:** Follow-up emails after Quinn's calls
-- Credentials in `.env` file
+## Email (via AgentMail)
+- **Account:** quinnorsted@agentmail.to
+- **API Key:** In `.env` as `AGENTMAIL_API_KEY`
+- **Docs:** https://docs.agentmail.to
+- **From Name:** "Quinn - Personal Assistant"
+
+### Send Email
+```powershell
+node scripts/agentmail-send.js <to> <subject> <body>
+# Example:
+node scripts/agentmail-send.js someone@example.com "Subject" "Body text here"
+```
+
+### Check Inbox
+```powershell
+node scripts/agentmail-check.js [limit]
+# Example:
+node scripts/agentmail-check.js 5
+```
+
+### Notes
+- AgentMail is built for AI agents (no CAPTCHA/lockouts!)
+- REST API: https://api.agentmail.to/v0
+- Old Gmail (quinn.strandholt@gmail.com) was disabled by Google
 
 ---
 
