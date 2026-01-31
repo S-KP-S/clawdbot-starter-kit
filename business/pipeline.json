@@ -1,0 +1,328 @@
+{
+  "leads": [
+    {
+      "id": "ml1uji7f",
+      "company": "Estate",
+      "contact": "Price",
+      "email": "dan@teamprice.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$1M-$3M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:23.883Z",
+      "updatedAt": "2026-01-31T05:03:23.883Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:23.883Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1uji7w",
+      "company": "Media",
+      "contact": "Hogate",
+      "email": "kim@facetedmedia.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$500K-$1M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:23.900Z",
+      "updatedAt": "2026-01-31T05:03:23.900Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:23.900Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1uji89",
+      "company": "UppercutSEO",
+      "contact": "Desmond",
+      "email": "tom@uppercutseo.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$500K-$2M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:23.913Z",
+      "updatedAt": "2026-01-31T05:03:23.913Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:23.913Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1uji8o",
+      "company": "Agency",
+      "contact": "Kelly",
+      "email": "jason@phoenixazadagency.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$500K-$1M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:23.928Z",
+      "updatedAt": "2026-01-31T05:03:23.928Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:23.928Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1uji92",
+      "company": "Creative",
+      "contact": "Bukolt",
+      "email": "jeni@havencreativeagency.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$500K-$2M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:23.942Z",
+      "updatedAt": "2026-01-31T05:03:23.942Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:23.942Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1uji9h",
+      "company": "Small",
+      "contact": "Costa",
+      "email": "madeleine@succeedingsmall.co",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$500K-$1.5M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:23.957Z",
+      "updatedAt": "2026-01-31T05:03:23.957Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:23.957Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1uji9w",
+      "company": "Relations",
+      "contact": "Scranton",
+      "email": "annie@pacepublicrelations.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$1M-$3M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:23.972Z",
+      "updatedAt": "2026-01-31T05:03:23.972Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:23.972Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1ujiae",
+      "company": "Inc",
+      "contact": "Diehl",
+      "email": "danielle@kickstartaccountinginc.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$500K-$1.5M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:23.990Z",
+      "updatedAt": "2026-01-31T05:03:23.990Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:23.990Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1ujias",
+      "company": "Motion",
+      "contact": "Kelly",
+      "email": "tomkelly@potentialinmotion.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$500K-$1M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:24.004Z",
+      "updatedAt": "2026-01-31T05:03:24.004Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:24.004Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1ujibb",
+      "company": "America",
+      "contact": "Ramirez",
+      "email": "richard@hometeamofamerica.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$2M-$5M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:24.023Z",
+      "updatedAt": "2026-01-31T05:03:24.023Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:24.023Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1ujibu",
+      "company": "SEO",
+      "contact": "Nelson",
+      "email": "josh@plumberseo.net",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$2M-$5M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:24.042Z",
+      "updatedAt": "2026-01-31T05:03:24.042Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:24.042Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1ujicb",
+      "company": "Marketing",
+      "contact": "Holland",
+      "email": "rory@cstmr.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$2M-$5M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:24.059Z",
+      "updatedAt": "2026-01-31T05:03:24.059Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:24.059Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1ujics",
+      "company": "Stream",
+      "contact": "DeSisto",
+      "email": "audrey@digitalmarketingstream.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$500K-$1.5M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:24.076Z",
+      "updatedAt": "2026-01-31T05:03:24.076Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:24.076Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1ujida",
+      "company": "Management",
+      "contact": "Welty",
+      "email": "steve@goodlifepm.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$2M-$5M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:24.094Z",
+      "updatedAt": "2026-01-31T05:03:24.094Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:24.094Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1ujidu",
+      "company": "Manage",
+      "contact": "Watson",
+      "email": "brad@pmpmanage.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$3M-$5M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:24.114Z",
+      "updatedAt": "2026-01-31T05:03:24.114Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:24.114Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1ujieb",
+      "company": "Business",
+      "contact": "Lopez",
+      "email": "henry@thehowofbusiness.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$500K-$1M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:24.131Z",
+      "updatedAt": "2026-01-31T05:03:24.131Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:24.131Z"
+        }
+      ]
+    },
+    {
+      "id": "ml1ujiew",
+      "company": "Content",
+      "contact": "(Owner)",
+      "email": "hello@milehighcontent.com",
+      "source": "csv-import",
+      "tier": null,
+      "revenue": "$500K-$1M",
+      "stage": "new",
+      "notes": [],
+      "createdAt": "2026-01-31T05:03:24.152Z",
+      "updatedAt": "2026-01-31T05:03:24.152Z",
+      "history": [
+        {
+          "stage": "new",
+          "date": "2026-01-31T05:03:24.152Z"
+        }
+      ]
+    }
+  ],
+  "lastUpdated": "2026-01-31T05:03:24.152Z"
+}

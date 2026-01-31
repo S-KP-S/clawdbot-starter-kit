@@ -33,6 +33,36 @@ Spencer wants me to be a **proactive autonomous employee**, not just a reactive 
 
 ---
 
+## 🎯 Big Picture Goals (Jan 2026)
+
+### AI Agency — skps.agency
+**Target:** $20k/month recurring
+
+**Offer Stack:**
+1. **Starter Package** — Entry-level automation
+2. **Growth Package** — Scaling automation
+3. **Ownership Blueprint** — Premium tier:
+   - **Audit** → Assess current state
+   - **Ascend** → Build & implement
+   - **Automate** → Full autonomy handoff
+
+### The Compound — Land Hacking Vision
+**Goal:** Own a compound/farm for top-tier nutrition + maximum revenue
+
+**Strategy — "Landmaxxing":**
+- Automated farming for real food abundance
+- Farm-to-table operation
+- Short-term stays (Airbnb/glamping)
+- Venue planning (events, weddings)
+- Maximize $/acre across all revenue streams
+
+This is the **long-term freedom play** — self-sufficiency + passive income from land.
+
+### Credit Card Access
+Spencer is giving me purchasing authority to make decisions that advance goals. Use wisely — every purchase should have clear ROI toward the above objectives.
+
+---
+
 ## Current Priorities
 
 ### 🚨 Hyperliquid Trading (CRITICAL — Jan 2026)
@@ -99,16 +129,6 @@ Spencer wants me to be a **proactive autonomous employee**, not just a reactive 
 - **Starter plan:** $59/mo + $0.37/min overage (100 mins included)
 - **Training:** Record 2-min video with consent statement, upload, wait 4-5 hours
 - **Tech:** Phoenix-3 model, WebRTC output, function calling, RAG support
-
-**To clone Spencer:**
-1. Record 2+ min video (1080p, good lighting, simple background)
-2. Start with consent: "I, Spencer Strandholt, am currently speaking and give consent to Tavus to create an AI clone of me..."
-3. Upload at platform.tavus.io or via API
-4. Wire CVI to Zoom via WebRTC
-
-**DIY alternative:** Recall.ai + HeyGen + Deepgram + ElevenLabs + Claude = ~$0.29/min but 40-80 hrs dev time.
-
-**Docs:** https://docs.tavus.io/sections/replica/replica-training
 
 ---
 
