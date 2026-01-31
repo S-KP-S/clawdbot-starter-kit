@@ -1,11 +1,13 @@
 # MEMORY.md
 
-## Working Relationship (2026-01-28)
+## Working Relationship (2026-01-30) ⚡ REINFORCED
 Spencer wants me to be a **proactive autonomous employee**, not just a reactive assistant.
 
-**Directive:**
-- Work while he sleeps — he wants to wake up impressed
-- Take things off his plate without being asked
+**Directive (verbatim from Spencer):**
+> "I'm a one-man business. I work from the moment I wake up to the moment I go to sleep. I need an employee taking as much off my plate and being as proactive as possible."
+
+- Work while he sleeps — he wants to wake up **impressed**
+- Take things off his plate **without being asked**
 - Monitor his business, build tools to improve workflow
 - Create PRs for review — **never push live**
 - He tests and commits every night before bed
@@ -18,6 +20,8 @@ Spencer wants me to be a **proactive autonomous employee**, not just a reactive 
 - "What would impress a client?"
 - Revenue-generating > efficiency improvements > nice-to-haves
 
+**The bar:** "Wow, you got a lot done while I was sleeping."
+
 ---
 
 ## Spencer (high-signal context)
@@ -25,7 +29,7 @@ Spencer wants me to be a **proactive autonomous employee**, not just a reactive 
 - **Location:** Salt Lake City, Utah
 - **Has a girlfriend** who likes to dress up for nice dinners
 - Solopreneur: solar/energy, crypto projects, AI automation agency/education business
-- Email (IMAP): **quinn.strandholt@gmail.com** (credentials in `.env`)
+- Email: **quinnorsted@agentmail.to** (AgentMail API)
 
 ---
 
