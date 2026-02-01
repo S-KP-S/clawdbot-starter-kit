@@ -1,0 +1,107 @@
+[
+  {
+    "name": "Team",
+    "email": "info@trutecelectric.com",
+    "company": "TruTec Electric",
+    "personalization_hook": "Saw you're rated 4.9 stars and offer 24/7 emergency service — that's a lot of scheduling and customer coordination to manage.",
+    "pain_point": "coordinating emergency calls, managing customer follow-ups, and keeping your 5-star reputation means a lot of manual work behind the scenes"
+  },
+  {
+    "name": "Dani",
+    "email": "info@dc-electricalservices.com",
+    "company": "DC Electric",
+    "personalization_hook": "Noticed you're Tesla, EcoFlow, and ChargePoint certified — EV charger installs are booming and that's a lot of leads to manage.",
+    "pain_point": "as EV installations grow, you're probably fielding more inquiries than ever and manually tracking each project through completion"
+  },
+  {
+    "name": "Team",
+    "email": "homeservices@in-charge-electric.com",
+    "company": "In Charge Electrical Services",
+    "personalization_hook": "10 branches across Texas and 500+ employees — that's impressive scale, and coordination must be a full-time job.",
+    "pain_point": "with that many branches and technicians, scheduling, dispatch, and customer communication across locations probably takes more time than it should"
+  },
+  {
+    "name": "Shannon",
+    "email": "shannon@beckettelectrical.com",
+    "company": "Beckett Electrical Services",
+    "personalization_hook": "WBE Certified and OSHA Strategic Partner since 2003 — you've built something solid over 20+ years.",
+    "pain_point": "balancing commercial jobs, compliance paperwork, and customer relationships probably means a lot of time spent on admin instead of growing the business"
+  },
+  {
+    "name": "Lachelle",
+    "email": "lachelle@magnifyelectric.com",
+    "company": "Magnify Electric",
+    "personalization_hook": "Lifetime warranty on labor AND materials is a bold promise — that kind of customer commitment takes serious follow-through.",
+    "pain_point": "tracking warranty claims, following up with past customers, and managing that level of service quality takes constant attention"
+  },
+  {
+    "name": "Ashley",
+    "email": "ashley@callsalt.com",
+    "company": "SALT Service Co.",
+    "personalization_hook": "40+ years in business covering electrical, plumbing, AND HVAC — that's a lot of moving parts to coordinate.",
+    "pain_point": "managing three different service lines means triple the scheduling, triple the follow-ups, and triple the customer communication"
+  },
+  {
+    "name": "Team",
+    "email": "info@parkerelectric.com",
+    "company": "Parker Electric",
+    "personalization_hook": "75+ years of combined management experience since 1982 — you've seen the industry evolve, but manual processes probably haven't.",
+    "pain_point": "after 40 years, you probably have systems that work but take way more time than they should in 2026"
+  },
+  {
+    "name": "Team",
+    "email": "info@aceroofingtexas.com",
+    "company": "Ace Roofing Company",
+    "personalization_hook": "Roofing in Austin means storm season keeps you slammed — that's a lot of emergency calls and estimates to juggle.",
+    "pain_point": "after every storm, you're probably drowning in inspection requests, follow-up calls, and insurance coordination"
+  },
+  {
+    "name": "Patrick",
+    "email": "info@acuraroofing.com",
+    "company": "Acura Roofing",
+    "personalization_hook": "As president, you're probably wearing every hat — sales, operations, and customer service all at once.",
+    "pain_point": "managing estimates, scheduling crews, and keeping customers updated probably eats up hours you could spend growing the business"
+  },
+  {
+    "name": "Team",
+    "email": "info@comancheroofing.com",
+    "company": "Comanche Roofing",
+    "personalization_hook": "Roofing in Texas is competitive — standing out means being fast and responsive, which takes constant effort.",
+    "pain_point": "responding to every lead quickly, following up on estimates, and keeping the schedule tight probably takes more time than actual roofing"
+  },
+  {
+    "name": "Team",
+    "email": "info@coolroofs.co",
+    "company": "Cool Roofs Austin",
+    "personalization_hook": "Energy-efficient roofing is a smart niche — customers care about savings, which means more questions and education.",
+    "pain_point": "explaining ROI, coordinating installs, and following up with energy-conscious customers takes more hand-holding than standard jobs"
+  },
+  {
+    "name": "Admin",
+    "email": "Admin@PearsonFamilyRoofing.com",
+    "company": "Pearson Family Roofing",
+    "personalization_hook": "Family business means you take every customer personally — but that level of care is hard to scale manually.",
+    "pain_point": "treating every customer like family while trying to grow means more hours spent on communication than you probably want"
+  },
+  {
+    "name": "Team",
+    "email": "sales@tarrytownroofing.com",
+    "company": "Tarrytown Roofing",
+    "personalization_hook": "Right in the heart of Austin on West 6th — you're serving a demanding clientele who expect fast responses.",
+    "pain_point": "high-end Austin neighborhoods mean high expectations for communication, follow-up, and project updates"
+  },
+  {
+    "name": "Team",
+    "email": "realtor@realtyaustin.com",
+    "company": "Realty Austin",
+    "personalization_hook": "4,800+ LinkedIn followers and a major Austin presence — your agents are probably juggling more leads than they can manually handle.",
+    "pain_point": "lead follow-up is the #1 thing agents drop the ball on, and with your volume, that's a lot of potential deals slipping through the cracks"
+  },
+  {
+    "name": "Team",
+    "email": "info@newmedia.com",
+    "company": "NEWMEDIA Digital Marketing",
+    "personalization_hook": "Full-service digital agency means you're managing campaigns, content, and client communication across dozens of accounts.",
+    "pain_point": "client reporting, content scheduling, and campaign management across multiple clients probably has your team doing too much manual work"
+  }
+]
