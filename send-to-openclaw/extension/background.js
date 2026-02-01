@@ -1,0 +1,256 @@
+const MENU_ID = "send-to-openclaw";
+
+function cleanWhitespace(text) {
+  return text.replace(/\s+/g, " ").trim();
+}
+
+function getSettings() {
+  return new Promise((resolve) => {
+    chrome.storage.sync.get(["webhookUrl", "authToken", "displayName"], (data) => {
+      resolve({
+        webhookUrl: data.webhookUrl || "",
+        authToken: data.authToken || "",
+        displayName: data.displayName || "OpenClaw"
+      });
+    });
+  });
+}
+
+function getGoogleDocId(url) {
+  const match = url.match(/docs\.google\.com\/document\/d\/([a-zA-Z0-9_-]+)/);
+  return match ? match[1] : null;
+}
+
+async function fetchGoogleDocText(tabId, docId) {
+  const [{ result }] = await chrome.scripting.executeScript({
+    target: { tabId },
+    func: async (id) => {
+      try {
+        const res = await fetch(`https://docs.google.com/document/d/${id}/export?format=txt`);
+        if (!res.ok) return { error: `HTTP ${res.status}` };
+        return { text: await res.text() };
+      } catch (e) {
+        return { error: e.message };
+      }
+    },
+    args: [docId]
+  });
+  if (result.error) throw new Error(result.error);
+  return result.text;
+}
+
+function extractPageContent() {
+  const selection = window.getSelection ? window.getSelection().toString().trim() : "";
+
+  // X / Twitter — extract tweet thread or article, strip sidebar and nav chrome
+  function tryTwitter() {
+    const host = location.hostname;
+    if (host !== "x.com" && host !== "twitter.com" && host !== "mobile.x.com" && host !== "mobile.twitter.com") return null;
+
+    // Try grabbing the primary content column, stripping sidebars
+    const primaryColumn = document.querySelector('div[data-testid="primaryColumn"]');
+
+    if (primaryColumn) {
+      const clone = primaryColumn.cloneNode(true);
+      clone.querySelectorAll('[data-testid="sidebarColumn"], [role="complementary"], a[href="/explore"], [data-testid="trend"], [data-testid="UserCell"]').forEach(n => n.remove());
+      clone.querySelectorAll('button, input, textarea, svg, [role="button"], [data-testid="toolBar"], [data-testid="replyButton"], [data-testid="retweetButton"], [data-testid="likeButton"], [data-testid="shareButton"]').forEach(n => n.remove());
+
+      const text = clone.innerText.trim();
+      if (text.length > 50) return text;
+    }
+
+    // Fallback: extract individual tweets from thread
+    const tweets = [];
+    const primaryArticle = document.querySelector('article[data-testid="tweet"][tabindex="-1"]');
+    const articles = document.querySelectorAll('article[data-testid="tweet"]');
+    const seen = new Set();
+
+    for (const article of articles) {
+      const userEl = article.querySelector('div[data-testid="User-Name"]');
+      const tweetText = article.querySelector('div[data-testid="tweetText"]');
+      const timeEl = article.querySelector('time');
+
+      const user = userEl ? userEl.innerText.replace(/\n/g, ' ').trim() : '';
+      const text = tweetText ? tweetText.innerText.trim() : '';
+      const time = timeEl ? timeEl.getAttribute('datetime') || timeEl.innerText : '';
+
+      if (!text) continue;
+      const key = user + '|' + text.slice(0, 80);
+      if (seen.has(key)) continue;
+      seen.add(key);
+
+      const isPrimary = article === primaryArticle;
+      let entry = '';
+      if (user) entry += user + '\n';
+      if (time) entry += time + '\n';
+      entry += text;
+      if (isPrimary) entry = '>>> ' + entry.replace(/\n/g, '\n>>> ');
+      tweets.push(entry);
+    }
+
+    if (tweets.length > 0) return tweets.join('\n\n---\n\n');
+    return null;
+  }
+
+  function removeNoise(root) {
+    const selectors = [
+      "script", "style", "noscript", "nav", "footer", "header", "aside",
+      "form", "button", "input", "textarea", "svg", "canvas", "iframe",
+      "[role='navigation']", "[role='banner']", "[role='contentinfo']",
+      "[aria-hidden='true']", ".ad", ".ads", ".advert", ".advertisement",
+      ".promo", ".subscribe", ".newsletter"
+    ];
+    selectors.forEach((selector) => {
+      root.querySelectorAll(selector).forEach((node) => node.remove());
+    });
+  }
+
+  function pickBestText(root) {
+    const candidates = Array.from(
+      root.querySelectorAll("article, main, [role='main'], section, div")
+    );
+    let bestText = "";
+    let bestScore = 0;
+    candidates.forEach((el) => {
+      const text = el.innerText ? el.innerText.trim() : "";
+      const wordCount = text.split(/\s+/).filter(Boolean).length;
+      const score = wordCount + Math.min(2000, text.length) / 10;
+      if (score > bestScore && wordCount > 80) {
+        bestScore = score;
+        bestText = text;
+      }
+    });
+    return bestText || (root.innerText || "");
+  }
+
+  const twitterContent = tryTwitter();
+  if (twitterContent) {
+    return {
+      url: location.href,
+      title: document.title || "Untitled",
+      selection,
+      content: twitterContent
+    };
+  }
+
+  const clone = document.body ? document.body.cloneNode(true) : document.documentElement.cloneNode(true);
+  removeNoise(clone);
+  let content = pickBestText(clone);
+  if (!content && document.body) {
+    content = document.body.innerText || "";
+  }
+
+  return {
+    url: location.href,
+    title: document.title || "Untitled",
+    selection,
+    content
+  };
+}
+
+async function sendPayload(tabId, tabUrl, tabTitle, selectionOverride) {
+  const settings = await getSettings();
+  if (!settings.webhookUrl) return;
+
+  let payload;
+  const docId = getGoogleDocId(tabUrl || "");
+
+  if (docId) {
+    const docText = await fetchGoogleDocText(tabId, docId);
+    payload = {
+      url: tabUrl,
+      title: tabTitle || "Google Doc",
+      content: docText.trim(),
+      selection: "",
+      message: "",
+      timestamp: new Date().toISOString()
+    };
+  } else {
+    const [{ result }] = await chrome.scripting.executeScript({
+      target: { tabId },
+      func: extractPageContent
+    });
+    payload = {
+      url: result.url,
+      title: result.title,
+      content: cleanWhitespace(result.content || ""),
+      selection: cleanWhitespace(selectionOverride || result.selection || ""),
+      message: "",
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  await fetch(settings.webhookUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(settings.authToken ? { Authorization: `Bearer ${settings.authToken}` } : {})
+    },
+    body: JSON.stringify(payload)
+  });
+}
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.sync.get(["displayName"], (data) => {
+    const name = data.displayName || "OpenClaw";
+    chrome.contextMenus.create({
+      id: MENU_ID,
+      title: `Send to ${name}`,
+      contexts: ["page", "selection"]
+    });
+  });
+});
+
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === "sync" && changes.displayName) {
+    const name = changes.displayName.newValue || "OpenClaw";
+    chrome.contextMenus.update(MENU_ID, { title: `Send to ${name}` });
+  }
+});
+
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+  if (info.menuItemId !== MENU_ID || !tab || !tab.id) return;
+  sendPayload(tab.id, tab.url, tab.title, info.selectionText || "").catch(() => {});
+});
+
+chrome.commands.onCommand.addListener(async (command) => {
+  if (command !== "send-selection") return;
+
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  if (!tab || !tab.id) return;
+
+  try {
+    // For Google Docs, no need for content script shenanigans
+    const docId = getGoogleDocId(tab.url || "");
+    if (docId) {
+      const docText = await fetchGoogleDocText(tab.id, docId);
+      await chrome.storage.local.set({
+        capturedSelection: "",
+        capturedUrl: tab.url || "",
+        capturedTitle: tab.title || "",
+        capturedDocContent: docText.trim()
+      });
+      chrome.action.openPopup();
+      return;
+    }
+
+    const [{ result }] = await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      func: () => {
+        const sel = window.getSelection ? window.getSelection().toString().trim() : "";
+        return { selection: sel, url: location.href, title: document.title || "Untitled" };
+      }
+    });
+
+    await chrome.storage.local.set({
+      capturedSelection: result.selection || "",
+      capturedUrl: result.url || "",
+      capturedTitle: result.title || "",
+      capturedDocContent: ""
+    });
+
+    chrome.action.openPopup();
+  } catch (e) {
+    chrome.action.openPopup();
+  }
+});

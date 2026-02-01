@@ -1,6 +1,36 @@
+# Secrets and credentials
 .env
 .env.*
 .env.txt
 .secrets/
+
+# Dependencies
 node_modules/
+
+# Logs
 *.log
+
+# Personal/private data - DO NOT COMMIT
+MEMORY.md
+TOOLS.md
+memory/
+leads/
+terrasol/
+data/
+reports/
+projects/
+models/
+tmp/
+
+# Business-specific (contains client data)
+business/clawdbot-service/
+
+# Audio/video files
+*.mp3
+*.wav
+*.mp4
+*.ogg
+
+# Large files
+*.bin
+*.zip

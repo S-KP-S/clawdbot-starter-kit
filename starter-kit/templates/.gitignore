@@ -1,0 +1,24 @@
+# Secrets
+.env
+.secrets/
+tokens.json
+**/tokens.json
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temp files
+tmp/
+*.tmp
