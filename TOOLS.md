@@ -37,6 +37,39 @@ wsl -d Ubuntu -e sh -c 'export PATH=$PATH:$HOME/.bun/bin && qmd status'
 - Looking for something Spencer discussed with ChatGPT
 - Searching for notes or prior work
 
+## Hyperliquid CLI (Trading)
+- **Package:** `hyperliquid-cli` (npm)
+- **Docs:** https://github.com/chrisling-dev/hyperliquid-cli
+- **Skill:** `skills/hyperliquid-cli/SKILL.md`
+
+**Auth configured via User env vars:**
+- `HYPERLIQUID_PRIVATE_KEY` — API wallet private key
+- `HYPERLIQUID_WALLET_ADDRESS` — Main wallet address
+
+### Quick Commands
+```powershell
+# Portfolio & positions
+hl account portfolio --json
+hl account positions -w  # Watch mode
+
+# Trading
+hl trade order market buy 0.001 BTC
+hl trade order limit sell 0.1 ETH 3500
+hl trade cancel-all -y
+
+# Prices
+hl asset price HYPE --json
+```
+
+### PowerShell Note
+Env vars need to be set in session (or use User env vars already configured):
+```powershell
+$env:HYPERLIQUID_PRIVATE_KEY = "0x..."
+hl account portfolio
+```
+
+---
+
 ## Google Gemini CLI
 - **Auth:** Logged in with Spencer's Google account (Google AI Pro)
 - **Model:** Auto (Gemini 3) - latest model
