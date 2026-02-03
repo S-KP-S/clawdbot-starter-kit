@@ -2,6 +2,66 @@
 
 Skills define *how* tools work. This file is for *your* specifics — the stuff that's unique to your setup.
 
+## 🧠 QMD - Spencer's Second Brain (IMPORTANT)
+QMD (Query Markup Documents) indexes Spencer's ChatGPT history, notes, and workspace for semantic search.
+
+**How to query:**
+```powershell
+# Search (keyword - fast, works on all docs)
+wsl -d Ubuntu -e sh -c 'export PATH=$PATH:$HOME/.bun/bin && qmd search "query" -n 10'
+
+# Semantic search (meaning-based - requires embeddings)
+wsl -d Ubuntu -e sh -c 'export PATH=$PATH:$HOME/.bun/bin && qmd vsearch "query" -n 10'
+
+# Hybrid + reranking (best quality)
+wsl -d Ubuntu -e sh -c 'export PATH=$PATH:$HOME/.bun/bin && qmd query "query" -n 10'
+
+# Get full document by path
+wsl -d Ubuntu -e sh -c 'export PATH=$PATH:$HOME/.bun/bin && qmd get "qmd://chatgpt/path/to/file.md"'
+
+# Search specific collection
+wsl -d Ubuntu -e sh -c 'export PATH=$PATH:$HOME/.bun/bin && qmd search "query" -c chatgpt -n 10'
+
+# Check status
+wsl -d Ubuntu -e sh -c 'export PATH=$PATH:$HOME/.bun/bin && qmd status'
+```
+
+**Collections:**
+- `chatgpt` — Past ChatGPT conversations (1864 files)
+- `clawd-memory` — Daily logs and personal notes (14 files)
+- `clawd-workspace` — Clawd workspace markdown files (385 files)
+
+**When to use:**
+- Spencer asks "did I talk about X before?"
+- Need context from past projects/decisions
+- Looking for something Spencer discussed with ChatGPT
+- Searching for notes or prior work
+
+## Google Gemini CLI
+- **Auth:** Logged in with Spencer's Google account (Google AI Pro)
+- **Model:** Auto (Gemini 3) - latest model
+- **Credentials:** Cached at `~/.config/@anthropic/gemini/credentials.json` (or similar)
+
+### Usage
+```powershell
+# One-shot query (non-interactive)
+gemini "Your prompt here"
+
+# With specific model
+gemini --model gemini-2.0-flash "Prompt"
+
+# Output as JSON
+gemini --output-format json "Return structured data"
+```
+
+### When to use Gemini
+- Need Google's latest model capabilities
+- Want a second opinion from a different AI
+- Tasks where Gemini excels (multimodal, long context)
+- Spencer's paid tier = higher rate limits
+
+---
+
 ## GoHighLevel (GHL) CRM For TerraSol (Land Wholesaling)
 - **Location ID:** Ky4b8wjuurnFCJfVb7Gl
 - **API Key:** pit-e0f74906-ed71-4548-a6fc-18b54ecdba4c
@@ -42,14 +102,14 @@ curl.exe -s "https://services.leadconnectorhq.com/contacts/?locationId=Ky4b8wjuu
 
 ## 🤖 Coding Agent Hierarchy
 
-**Spencer's Preference:** Use **Kimi CLI** for frontend work.
+**Spencer's Preference:** Use **OpenCode** (Kimi) for frontend work.
 
 **Main Stack** (use in order, overflow on failure/limits):
 
 | Priority | Agent | Model | Command |
 |----------|-------|-------|---------|
 | 1️⃣ | **Codex CLI** | OpenAI Codex | `codex -a auto "prompt"` |
-| 2️⃣ | **Kilo Code** | Kimi K2.5 (FREE) | `kilocode --auto --yolo -m code "prompt"` |
+| 2️⃣ | **OpenCode** | Kimi K2.5 (FREE) | `opencode run -m opencode/kimi-k2.5-free "prompt"` |
 | 3️⃣ | **Kimi CLI** | Kimi K2.5 (paid) | `& "C:\Users\spenc\.local\bin\kimi" -y -p "prompt"` |
 | 4️⃣ | **Claude Code** | Sonnet | `claude -p "prompt" --allowedTools Edit,Write,Bash` |
 | 5️⃣ | **Claude Code** | **Opus 4.5** 🔥 | `claude -p "prompt" --model claude-opus-4-5-20251101 --allowedTools Edit,Write,Bash` |
@@ -61,8 +121,8 @@ curl.exe -s "https://services.leadconnectorhq.com/contacts/?locationId=Ky4b8wjuu
 
 **Rules:**
 - Start with Codex for coding tasks
-- If Codex hits rate limits or fails → Kimi CLI
-- If Kimi fails → Kilo Code
+- If Codex hits rate limits or fails → OpenCode (free Kimi)
+- If OpenCode fails → Kimi CLI (paid)
 - If errors persist → Claude Code (Sonnet) for debugging/recovery
 - If all else fails → **Opus 4.5** (the beast) for nuclear option
 - **Groq** → Use anytime for fast parallel answers or quick queries
@@ -124,67 +184,79 @@ curl.exe -s "https://api.groq.com/openai/v1/chat/completions" `
 
 ---
 
-## Kilo Code CLI (Frontend Sub-Agent)
-- **Model:** Moonshot Kimi K 2.5 (free tier, good at frontend)
-- **Role:** First-pass frontend work — React components, CSS, UI polish
-- **Command:** `kilocode --auto --yolo -w <workdir> -m code "<prompt>"`
-
-### Usage Pattern
-```powershell
-# Create test workspace with git
-$dir = "C:\Users\spenc\clawd\tmp\kilo-$(Get-Date -Format 'HHmmss')"
-New-Item -ItemType Directory -Path $dir -Force
-Set-Location $dir
-git init
-
-# Run Kilo Code in background
-kilocode --auto --yolo -w $dir -m code "Build [component description]"
-```
-
-### Flags
-| Flag | Effect |
-|------|--------|
-| `--auto` | Autonomous mode (non-interactive) |
-| `--yolo` | Auto-approve all tool permissions |
-| `-w <path>` | Workspace directory |
-| `-m <mode>` | Mode: code, architect, ask, debug, orchestrator |
-| `-P <provider>` | Provider ID |
-| `-M <model>` | Override model |
-
-### Notes
-- Creates todo lists and checkpoints automatically
-- Will attempt browser testing (downloads Chromium ~300MB if needed)
-- Good for: React components, CSS transitions, UI polish, standalone HTML demos
-- Tested: Built a 455-line dark mode toggle with glassmorphism, animations, accessibility
-
-## Grok for X/Twitter (via OpenRouter)
-- **Model:** `x-ai/grok-code-fast-1`
-- **Use for:** Twitter/X trending topics, searches, sentiment, real-time X data
-- **API:** OpenRouter (key in Clawdbot config)
+## OpenCode CLI (Free Kimi K2.5)
+- **Model:** Kimi K2.5 (free via OpenCode)
+- **Role:** First-pass coding work — React components, CSS, general dev tasks
+- **Command:** `opencode run -m opencode/kimi-k2.5-free "prompt"`
 
 ### Usage
 ```powershell
-# Write query to file
+# One-shot run (non-interactive)
+opencode run -m opencode/kimi-k2.5-free "Build a React component for X"
+
+# Continue last session
+opencode run -c -m opencode/kimi-k2.5-free "Continue from where we left off"
+
+# Attach files
+opencode run -m opencode/kimi-k2.5-free -f ./src/App.tsx "Refactor this component"
+
+# Interactive TUI mode
+opencode
+```
+
+### Key Flags
+| Flag | Effect |
+|------|--------|
+| `-m, --model` | Model in format provider/model |
+| `-c, --continue` | Continue last session |
+| `-s, --session` | Continue specific session ID |
+| `-f, --file` | Attach file(s) to message |
+| `--agent` | Agent to use |
+| `--format` | Output format: default or json |
+
+### Available Kimi Models
+- `opencode/kimi-k2.5-free` — FREE tier ✓
+- `kimi-for-coding/k2p5` — Kimi for Coding
+- `moonshotai/kimi-k2.5` — Direct Moonshot API (paid)
+
+### Notes
+- Replaced Kilo Code (Kimi no longer free there)
+- Good for: React components, CSS, general coding tasks
+- Use `opencode models` to list all available models
+
+## Twitter/X Queries (via Grok 4.1)
+Use **OpenRouter Grok 4.1** for X/Twitter data.
+
+### Usage
+```powershell
 @'
 {
-  "model": "x-ai/grok-code-fast-1",
-  "messages": [{"role": "user", "content": "YOUR TWITTER QUERY HERE"}]
+  "model": "x-ai/grok-4.1",
+  "messages": [{"role": "user", "content": "What's trending on Twitter/X right now?"}]
 }
-'@ | Out-File -Encoding utf8 C:\Users\spenc\clawd\tmp\grok-request.json
+'@ | Out-File -Encoding utf8 $env:TEMP\grok-request.json
 
-# Call Grok
 curl.exe -s "https://openrouter.ai/api/v1/chat/completions" `
   -H "Authorization: Bearer $env:OPENROUTER_API_KEY" `
   -H "Content-Type: application/json" `
-  -d "@C:\Users\spenc\clawd\tmp\grok-request.json"
+  -d "@$env:TEMP\grok-request.json"
 ```
 
 ### When Spencer asks about Twitter/X:
-- Trending topics → Grok
-- Use openrouter grok 4.1
-- What's happening on X → Grok
-- Sentiment on a topic → Grok
-- Search Twitter for [topic] → Grok
+- Trending topics → Grok 4.1
+- What's happening on X → Grok 4.1
+- Sentiment on a topic → Grok 4.1
+- Search Twitter for [topic] → Grok 4.1
+- Fetch tweet content → Grok 4.1 (or ask Spencer to paste it)
+
+---
+
+## Kimi K2.5 for Heartbeats
+Use **Kimi CLI** for heartbeat/background tasks when OpenRouter free models fail.
+
+```powershell
+& "C:\Users\spenc\.local\bin\kimi" -y -p "Your heartbeat task here"
+```
 
 ---
 
@@ -365,6 +437,47 @@ node scripts/agentmail-check.js 5
 - AgentMail is built for AI agents (no CAPTCHA/lockouts!)
 - REST API: https://api.agentmail.to/v0
 - Old Gmail (quinn.strandholt@gmail.com) was disabled by Google
+
+---
+
+## Summarize CLI (steipete/summarize)
+- **Version:** 0.10.0
+- **Path:** `C:\Users\spenc\AppData\Roaming\fnm\node-versions\v25.5.0\installation\summarize.ps1`
+- **Docs:** https://github.com/steipete/summarize
+
+**What it does:** Fast summaries from URLs, files, YouTube, podcasts, PDFs, audio/video.
+
+### Usage
+```powershell
+# Extract content only (no LLM call)
+& "C:\Users\spenc\AppData\Roaming\fnm\node-versions\v25.5.0\installation\summarize.ps1" "https://example.com" --extract
+
+# Summarize with auto model selection
+& "C:\Users\spenc\AppData\Roaming\fnm\node-versions\v25.5.0\installation\summarize.ps1" "https://example.com"
+
+# Summarize YouTube video
+& "C:\Users\spenc\AppData\Roaming\fnm\node-versions\v25.5.0\installation\summarize.ps1" "https://youtu.be/dQw4w9WgXcQ" --youtube auto
+
+# Use free OpenRouter models
+& "C:\Users\spenc\AppData\Roaming\fnm\node-versions\v25.5.0\installation\summarize.ps1" "https://example.com" --model free
+
+# Extract slides from YouTube
+& "C:\Users\spenc\AppData\Roaming\fnm\node-versions\v25.5.0\installation\summarize.ps1" "https://youtu.be/xyz" --slides
+```
+
+### Config
+Config lives at `~/.summarize/config.json`. Uses existing API keys from env:
+- `OPENROUTER_API_KEY` — for `--model free` or OpenRouter models
+- `OPENAI_API_KEY` — for OpenAI models
+- `ANTHROPIC_API_KEY` — for Claude models
+- `GEMINI_API_KEY` — for Google models
+
+### When to use
+- Quick article/page summaries
+- YouTube video digests
+- Podcast transcription
+- PDF extraction
+- Research workflow
 
 ---
 
