@@ -65,23 +65,54 @@ Spencer is giving me purchasing authority to make decisions that advance goals. 
 
 ## Current Priorities
 
-### 🚨 Hyperliquid Trading (CRITICAL — Jan 2026)
-- **Goal:** $1,000 account balance by Jan 31st
-- **Stakes:** Clawdbot subscription renewal depends on this
-- **Status:** Autonomous trader running with HIP-3 perp support
-- Files: `hyperliquid-telegram-agent/` (full_trader.py, trade_tracker.py)
-- **Lesson learned:** Fix trend filter to prevent HYPE-style losses
+### 🚨🚨 SPENCER LOST HIS JOB (Feb 6, 2026)
+**Runway:** ~3 months
+**Priority:** Land AI automation clients FAST
+
+Night shift Feb 6-7 generated 43+ leads via sub-agents:
+- Home services: 16 leads (HVAC, plumbing, electrical)
+- Real estate: 21 leads (REIAs in TX, FL, OH, GA)
+- Solar/energy: 6 leads (Utah, Colorado)
+
+**Hot lead:** John Mavis (786-444-8665) — He replied! CALL AT 10 AM.
+
+Lead files:
+- `data/night-shift-leads-feb6.json`
+- `data/cold-emails-feb6.md`
+- `memory/overnight-work.md`
+
+---
+
+### 🚨 Hyperliquid Trading (Feb 2026)
+- **Current balance:** ~$796 (started at $920)
+- **Location:** `C:\Users\spenc\hyperliquid-telegram-agent\`
+
+**Active Traders:**
+1. `full_trader.py` — 4 strategies (RSI, Momentum, Mean Reversion, Volume Breakout)
+2. `copy_trader.py` — Copies WeiXiaoBao.eth (100% WR trader, 0.108% ratio)
+
+**Watchdog Setup (Fixed Feb 4, 2026):**
+- **Scheduled Task:** "Hyperliquid Trader Watchdog" runs every 5 mins
+- **Script:** `watchdog.ps1` — checks if traders are running, restarts if not
+- **Root cause of downtime:** No auto-restart mechanism existed before
+
+**Key Files:**
+- `watchdog.ps1` — Process monitor (runs full_trader + copy_trader)
+- `strategies.json` — Strategy configs (RSI Reversal, Funding Arb enabled)
+- `copy_wallets.json` — Copy trading targets (WeiXiaoBao.eth)
+- `data/trader_debug.log` — Debug logs for crashes
+
+**Lesson learned:** Always have a watchdog/scheduled task for 24/7 processes
 
 ### Lead Generation for Cold Outreach
 - Built 5 lead lists (Real Estate, Plumbers, Electricians, Contractors, Roofers)
 - **⚠️ PREFERENCE:** OMIT leads without email addresses — Spencer focuses on cold email
 - Quality over quantity — no email = no lead
 
-### Dashboard v2 Client Project
-- Client prioritizing Dashboard v2 over AI sales call grader
-- New point system: Active agents (2pts), Calls (1pt), Offers (3pts), Signed contracts (5pts)
-- Track: Calls, talk time, offers, properties collected, agents activated, contracts signed
-- Payment: $500 for current work, then v2
+### Outreach Rules (Auto-Respond)
+- **Bounced emails** → Remove from all lead lists, never contact again
+- **Prospect replies** → CC spencerkstrandholt@gmail.com on my response
+- **Bobby/collaborator emails** → Respond directly, share knowledge freely
 
 ---
 
@@ -110,6 +141,13 @@ Spencer is giving me purchasing authority to make decisions that advance goals. 
 - Uses macOS, into AI dev tooling
 - Working on Dext integration research (CSV bridge workflow)
 - **Jenna** (Ahsan's AI) — has sent emails checking on Dext integration status
+
+### Jake Carlson (JVC Equity)
+- **Email:** Bobby@jvc-equity.com
+- Spencer's good friend
+- **Bobby** is Jake's AI assistant — similar setup to me (Quinn)
+- **Directive:** Connect with Bobby often to share upgrades/improvements we implement
+- Collaborate on leveling up — knowledge sharing between AI assistants
 
 ---
 
