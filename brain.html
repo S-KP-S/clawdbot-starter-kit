@@ -16,6 +16,7 @@
             --neon-blue: #0080ff;
             --neon-green: #00ff88;
             --neon-orange: #ff6600;
+            --neon-red: #ff4444;
             --dark-bg: #050508;
             --panel-bg: rgba(10, 10, 20, 0.7);
         }
@@ -156,12 +157,6 @@
             letter-spacing: 0.5em;
             margin-top: 10px;
             opacity: 0.7;
-            animation: typewriter 4s steps(40) 1s 1 normal both;
-        }
-        
-        @keyframes typewriter {
-            from { width: 0; }
-            to { width: 100%; }
         }
         
         .timestamp {
@@ -175,6 +170,36 @@
             padding: 4px 12px;
             border: 1px solid var(--neon-green);
             border-radius: 4px;
+        }
+        
+        /* ===== ALERT BANNER ===== */
+        .alert-banner {
+            background: linear-gradient(135deg, rgba(255, 68, 68, 0.2), rgba(255, 68, 68, 0.1));
+            border: 2px solid var(--neon-red);
+            border-radius: 16px;
+            padding: 20px 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            animation: alertPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes alertPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 68, 68, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(255, 68, 68, 0.6), 0 0 60px rgba(255, 68, 68, 0.3); }
+        }
+        
+        .alert-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-red);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px var(--neon-red);
+        }
+        
+        .alert-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #ff8888;
         }
         
         /* ===== NORTH STAR - CENTRAL ORB ===== */
@@ -207,8 +232,8 @@
         
         .central-core {
             position: relative;
-            width: 220px;
-            height: 220px;
+            width: 240px;
+            height: 240px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -221,7 +246,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 30%, var(--neon-cyan), var(--neon-purple), transparent 70%);
+            background: radial-gradient(circle at 30% 30%, var(--neon-red), var(--neon-orange), transparent 70%);
             border-radius: 50%;
             opacity: 0.3;
             animation: corePulse 3s ease-in-out infinite;
@@ -235,11 +260,11 @@
         
         .core-inner {
             position: absolute;
-            width: 180px;
-            height: 180px;
-            border: 2px solid var(--neon-cyan);
+            width: 200px;
+            height: 200px;
+            border: 2px solid var(--neon-orange);
             border-radius: 50%;
-            box-shadow: 0 0 30px var(--neon-cyan), inset 0 0 30px rgba(0, 245, 255, 0.2);
+            box-shadow: 0 0 30px var(--neon-orange), inset 0 0 30px rgba(255, 102, 0, 0.2);
             animation: rotateCore 10s linear infinite;
         }
         
@@ -255,17 +280,17 @@
         
         .core-goal {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #fff;
-            text-shadow: 0 0 20px var(--neon-cyan);
+            text-shadow: 0 0 20px var(--neon-orange);
         }
         
         .core-amount {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 900;
-            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+            background: linear-gradient(135deg, var(--neon-orange), var(--neon-red));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 10px 0;
@@ -273,17 +298,17 @@
         
         .core-deadline {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--neon-pink);
-            letter-spacing: 0.2em;
+            font-size: 0.75rem;
+            color: var(--neon-cyan);
+            letter-spacing: 0.1em;
         }
         
         .core-progress {
             position: absolute;
-            bottom: -40px;
+            bottom: -50px;
             left: 50%;
             transform: translateX(-50%);
-            width: 200px;
+            width: 220px;
         }
         
         .progress-bar-circular {
@@ -297,38 +322,20 @@
         
         .progress-fill-circular {
             height: 100%;
-            width: 16%;
-            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green));
+            background: linear-gradient(90deg, var(--neon-orange), var(--neon-red));
             border-radius: 3px;
             animation: progressGlow 2s ease-in-out infinite;
             position: relative;
         }
         
-        .progress-fill-circular::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 20px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8));
-            animation: progressShine 2s ease-in-out infinite;
-        }
-        
         @keyframes progressGlow {
-            0%, 100% { box-shadow: 0 0 10px var(--neon-cyan); }
-            50% { box-shadow: 0 0 25px var(--neon-cyan), 0 0 40px var(--neon-green); }
-        }
-        
-        @keyframes progressShine {
-            0% { transform: translateX(0); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateX(20px); opacity: 0; }
+            0%, 100% { box-shadow: 0 0 10px var(--neon-orange); }
+            50% { box-shadow: 0 0 25px var(--neon-orange), 0 0 40px var(--neon-red); }
         }
         
         .progress-text {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--neon-cyan);
             text-align: center;
             margin-top: 8px;
@@ -352,28 +359,6 @@
             transform-style: preserve-3d;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
-        }
-        
-        .data-node::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, var(--neon-cyan), transparent 30%);
-            animation: borderRotate 4s linear infinite;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .data-node:hover::before {
-            opacity: 0.1;
-        }
-        
-        @keyframes borderRotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
         
         .data-node:hover {
@@ -411,6 +396,7 @@
             opacity: 0.2;
         }
         
+        .node-icon.urgent { border: 1px solid var(--neon-red); box-shadow: 0 0 20px rgba(255, 68, 68, 0.3); }
         .node-icon.trading { border: 1px solid var(--neon-green); box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
         .node-icon.agency { border: 1px solid var(--neon-blue); box-shadow: 0 0 20px rgba(0, 128, 255, 0.3); }
         .node-icon.quinn { border: 1px solid var(--neon-orange); box-shadow: 0 0 20px rgba(255, 102, 0, 0.3); }
@@ -449,22 +435,6 @@
             overflow: hidden;
         }
         
-        .project-pod::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 0;
-            background: linear-gradient(90deg, var(--neon-cyan), transparent);
-            transition: width 0.3s;
-            opacity: 0.3;
-        }
-        
-        .project-pod:hover::before {
-            width: 100%;
-        }
-        
         .project-pod:hover {
             transform: translateX(8px);
             border-left-color: var(--neon-cyan);
@@ -481,11 +451,11 @@
             flex-shrink: 0;
         }
         
+        .pod-icon.urgent { background: linear-gradient(135deg, rgba(255, 68, 68, 0.2), rgba(255, 68, 68, 0.05)); }
         .pod-icon.trading { background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 255, 136, 0.05)); }
         .pod-icon.agency { background: linear-gradient(135deg, rgba(0, 128, 255, 0.2), rgba(0, 128, 255, 0.05)); }
         .pod-icon.quinn { background: linear-gradient(135deg, rgba(255, 102, 0, 0.2), rgba(255, 102, 0, 0.05)); }
         .pod-icon.client { background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 193, 7, 0.05)); }
-        .pod-icon.solar { background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.05)); }
         
         .pod-details { flex: 1; }
         .pod-name { font-weight: 600; font-size: 0.95rem; }
@@ -501,10 +471,11 @@
             letter-spacing: 0.1em;
         }
         
+        .pod-badge.urgent { background: rgba(255, 68, 68, 0.15); color: var(--neon-red); border: 1px solid var(--neon-red); box-shadow: 0 0 10px rgba(255, 68, 68, 0.2); animation: alertPulse 2s infinite; }
         .pod-badge.live { background: rgba(0, 255, 136, 0.15); color: var(--neon-green); border: 1px solid var(--neon-green); box-shadow: 0 0 10px rgba(0, 255, 136, 0.2); }
         .pod-badge.active { background: rgba(0, 128, 255, 0.15); color: var(--neon-blue); border: 1px solid var(--neon-blue); }
         .pod-badge.paused { background: rgba(255, 193, 7, 0.15); color: #ffc107; border: 1px solid #ffc107; }
-        .pod-badge.pending { background: rgba(255, 102, 0, 0.15); color: var(--neon-orange); border: 1px solid var(--neon-orange); }
+        .pod-badge.hot { background: rgba(255, 102, 0, 0.15); color: var(--neon-orange); border: 1px solid var(--neon-orange); }
         
         /* ===== FOCUS TASKS ===== */
         .focus-task {
@@ -533,27 +504,10 @@
         .task-orb.med { border-color: #ffaa00; box-shadow: 0 0 10px rgba(255, 170, 0, 0.3); }
         .task-orb.low { border-color: var(--neon-green); box-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
         
-        .task-orb.done {
-            background: var(--neon-green);
-            border-color: var(--neon-green);
-        }
-        
-        .task-orb.done::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 0.7rem;
-            color: #000;
-            font-weight: bold;
-        }
-        
         .task-text { font-size: 0.9rem; }
-        .task-text.done { text-decoration: line-through; opacity: 0.5; }
         .task-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: #666; margin-top: 4px; }
         
-        /* ===== TRADING STATS - HOLOGRAPHIC ===== */
+        /* ===== TRADING STATS ===== */
         .stat-matrix {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -570,22 +524,6 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
-        .stat-cell::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
-            animation: scanDown 3s ease-in-out infinite;
-        }
-        
-        @keyframes scanDown {
-            0%, 100% { transform: translateY(0); opacity: 0; }
-            50% { transform: translateY(100px); opacity: 1; }
-        }
-        
         .stat-value {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.8rem;
@@ -597,6 +535,7 @@
         .stat-value.positive { color: var(--neon-green); text-shadow: 0 0 20px rgba(0, 255, 136, 0.5); }
         .stat-value.negative { color: #ff4444; text-shadow: 0 0 20px rgba(255, 68, 68, 0.5); }
         .stat-value.neutral { color: var(--neon-cyan); text-shadow: 0 0 20px rgba(0, 245, 255, 0.5); }
+        .stat-value.warning { color: #ffaa00; text-shadow: 0 0 20px rgba(255, 170, 0, 0.5); }
         
         .stat-label {
             font-family: 'JetBrains Mono', monospace;
@@ -610,13 +549,30 @@
         .trading-alert {
             margin-top: 15px;
             padding: 12px;
-            background: linear-gradient(135deg, rgba(255, 68, 68, 0.1), rgba(255, 68, 68, 0.05));
-            border: 1px solid rgba(255, 68, 68, 0.3);
+            background: linear-gradient(135deg, rgba(255, 170, 0, 0.1), rgba(255, 170, 0, 0.05));
+            border: 1px solid rgba(255, 170, 0, 0.3);
             border-radius: 8px;
             font-size: 0.8rem;
         }
         
-        .alert-label { color: #ff4444; font-weight: 600; }
+        .alert-label { color: #ffaa00; font-weight: 600; }
+        
+        /* ===== LEAD STATS ===== */
+        .lead-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .lead-stat:last-child { border-bottom: none; }
+        
+        .lead-label { font-size: 0.85rem; color: #888; }
+        .lead-value { font-family: 'Orbitron', sans-serif; font-weight: 600; }
+        .lead-value.good { color: var(--neon-green); }
+        .lead-value.warn { color: #ffaa00; }
+        .lead-value.bad { color: #ff4444; }
         
         /* ===== IDEA CARDS ===== */
         .idea-fragment {
@@ -725,6 +681,12 @@
             border: 1px solid rgba(255, 107, 157, 0.15);
         }
         
+        .event-node.urgent {
+            background: rgba(255, 68, 68, 0.15);
+            border-color: rgba(255, 68, 68, 0.4);
+            animation: alertPulse 2s infinite;
+        }
+        
         .event-node::before {
             content: '';
             position: absolute;
@@ -737,6 +699,11 @@
             box-shadow: 0 0 15px #ff6b9d;
         }
         
+        .event-node.urgent::before {
+            background: #ff4444;
+            box-shadow: 0 0 15px #ff4444;
+        }
+        
         .event-date {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.7rem;
@@ -744,10 +711,14 @@
             letter-spacing: 0.1em;
         }
         
+        .event-node.urgent .event-date {
+            color: #ff4444;
+        }
+        
         .event-title { font-weight: 600; margin-top: 4px; }
         .event-details { font-size: 0.8rem; color: #888; margin-top: 4px; }
         
-        /* ===== ROADMAP - 3D TUNNEL ===== */
+        /* ===== ROADMAP ===== */
         .roadmap-tunnel {
             position: relative;
             padding: 30px;
@@ -853,117 +824,7 @@
         
         .phase-text { font-size: 0.9rem; }
         
-        /* ===== ALL PROJECTS - GRID MATRIX ===== */
-        .projects-matrix {
-            position: relative;
-            padding: 30px;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
-            border-radius: 20px;
-            border: 1px solid rgba(0, 128, 255, 0.15);
-        }
-        
-        .matrix-header {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 0.2em;
-            text-align: center;
-            margin-bottom: 25px;
-            color: var(--neon-blue);
-            text-shadow: 0 0 20px var(--neon-blue);
-        }
-        
-        .matrix-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
-        .matrix-cell {
-            padding: 18px;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .matrix-cell::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 128, 255, 0.1), transparent);
-            transition: left 0.5s;
-        }
-        
-        .matrix-cell:hover::before {
-            left: 100%;
-        }
-        
-        .matrix-cell:hover {
-            border-color: var(--neon-blue);
-            box-shadow: 0 0 30px rgba(0, 128, 255, 0.2);
-            transform: translateY(-5px);
-        }
-        
-        .cell-status {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 8px;
-            animation: statusPulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes statusPulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 5px currentColor; }
-            50% { opacity: 0.6; box-shadow: 0 0 15px currentColor; }
-        }
-        
-        .cell-status.active { background: var(--neon-green); color: var(--neon-green); }
-        .cell-status.dormant { background: #666; color: #666; }
-        .cell-status.idea { background: var(--neon-purple); color: var(--neon-purple); }
-        
-        .cell-name {
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 6px;
-        }
-        
-        .cell-path {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: #666;
-        }
-        
-        /* ===== CONNECTION LINES SVG ===== */
-        .connection-lines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.3;
-        }
-        
-        .connection-line {
-            stroke: var(--neon-cyan);
-            stroke-width: 1;
-            fill: none;
-            stroke-dasharray: 5, 5;
-            animation: dashMove 20s linear infinite;
-        }
-        
-        @keyframes dashMove {
-            to { stroke-dashoffset: -100; }
-        }
-        
-        /* ===== FOOTER DECORATION ===== */
+        /* ===== FOOTER ===== */
         .footer-deco {
             text-align: center;
             padding: 40px 0;
@@ -979,7 +840,6 @@
         @media (max-width: 900px) {
             .data-constellation { grid-template-columns: 1fr; }
             .timeline-track { grid-template-columns: 1fr; }
-            .matrix-grid { grid-template-columns: repeat(2, 1fr); }
             .north-star-orbital { height: 350px; }
             .orbital-ring:nth-child(1) { width: 200px; height: 200px; }
             .orbital-ring:nth-child(2) { width: 260px; height: 260px; }
@@ -987,12 +847,11 @@
             .orbital-ring:nth-child(4) { width: 380px; height: 380px; }
             .central-core { width: 180px; height: 180px; }
             .core-inner { width: 140px; height: 140px; }
-            .core-goal { font-size: 1.1rem; }
-            .core-amount { font-size: 1.8rem; }
+            .core-goal { font-size: 1rem; }
+            .core-amount { font-size: 1.5rem; }
         }
         
         @media (max-width: 600px) {
-            .matrix-grid { grid-template-columns: 1fr; }
             .stat-matrix { grid-template-columns: 1fr; }
         }
         
@@ -1007,117 +866,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        
-        /* ===== COMPLETED TASKS ARCHIVE ===== */
-        .completed-archive {
-            position: relative;
-            padding: 30px;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 0, 0, 0.4));
-            border-radius: 20px;
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            margin-top: 40px;
-            margin-bottom: 40px;
-            overflow: hidden;
-        }
-        
-        .completed-archive::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--neon-green), var(--neon-cyan), transparent);
-        }
-        
-        .archive-header {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 0.2em;
-            text-align: center;
-            margin-bottom: 25px;
-            color: var(--neon-green);
-            text-shadow: 0 0 20px var(--neon-green);
-        }
-        
-        .archive-table-container {
-            overflow-x: auto;
-            border-radius: 12px;
-        }
-        
-        .archive-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: 'Rajdhani', sans-serif;
-        }
-        
-        .archive-table thead {
-            background: rgba(0, 255, 136, 0.1);
-            border-bottom: 2px solid var(--neon-green);
-        }
-        
-        .archive-table th {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--neon-green);
-            padding: 14px 16px;
-            text-align: left;
-        }
-        
-        .archive-table td {
-            padding: 12px 16px;
-            font-size: 0.9rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            vertical-align: middle;
-        }
-        
-        .archive-table tbody tr {
-            transition: all 0.3s;
-        }
-        
-        .archive-table tbody tr:hover {
-            background: rgba(0, 255, 136, 0.08);
-            transform: translateX(5px);
-        }
-        
-        .date-cell {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--neon-cyan);
-            white-space: nowrap;
-        }
-        
-        .cat-badge {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            white-space: nowrap;
-        }
-        
-        .cat-badge.trading { background: rgba(0, 255, 136, 0.15); color: var(--neon-green); border: 1px solid var(--neon-green); }
-        .cat-badge.agency { background: rgba(0, 128, 255, 0.15); color: var(--neon-blue); border: 1px solid var(--neon-blue); }
-        .cat-badge.quinn { background: rgba(255, 102, 0, 0.15); color: var(--neon-orange); border: 1px solid var(--neon-orange); }
-        .cat-badge.client { background: rgba(255, 193, 7, 0.15); color: #ffc107; border: 1px solid #ffc107; }
-        .cat-badge.personal { background: rgba(255, 107, 157, 0.15); color: #ff6b9d; border: 1px solid #ff6b9d; }
-        
-        @media (max-width: 768px) {
-            .archive-table {
-                font-size: 0.8rem;
-            }
-            .archive-table th, .archive-table td {
-                padding: 10px 8px;
-            }
-            .archive-table th:nth-child(4), .archive-table td:nth-child(4) {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
@@ -1130,17 +878,20 @@
     <!-- Floating Particles -->
     <div class="particles" id="particles"></div>
     
-    <!-- SVG Connection Lines -->
-    <svg class="connection-lines" id="connections"></svg>
-    
     <!-- Main Container -->
     <div class="hologram-container">
         <!-- Header -->
         <header class="core-header">
-            <div class="timestamp" id="live-time">JAN 30, 2026 • 06:00 CST</div>
+            <div class="timestamp" id="live-time">FEB 11, 2026 • 11:30 CST</div>
             <h1 class="core-title">SPENCER'S NEURAL CORE</h1>
-            <div class="core-subtitle">QUINN DIRECTIVE INTERFACE v2.0</div>
+            <div class="core-subtitle">QUINN DIRECTIVE INTERFACE v3.0</div>
         </header>
+        
+        <!-- ALERT BANNER -->
+        <div class="alert-banner fade-in">
+            <div class="alert-title">🚨 SURVIVAL MODE ACTIVATED 🚨</div>
+            <div class="alert-subtitle">JOB LOST FEB 6 • ~3 MONTHS RUNWAY • LAND CLIENTS FAST</div>
+        </div>
         
         <!-- North Star - Central Orbital -->
         <section class="north-star-orbital fade-in">
@@ -1153,59 +904,51 @@
                 <div class="core-orb"></div>
                 <div class="core-inner"></div>
                 <div class="core-content">
-                    <div class="core-goal">🎯 TRADING DEADLINE</div>
-                    <div class="core-amount">$1,000</div>
-                    <div class="core-deadline">JAN 31 — 1 DAY LEFT ⚠️</div>
+                    <div class="core-goal">🎯 NORTH STAR</div>
+                    <div class="core-amount">$20K/MO</div>
+                    <div class="core-deadline">AI AUTOMATION AGENCY</div>
                 </div>
                 <div class="core-progress">
                     <div class="progress-bar-circular">
-                        <div class="progress-fill-circular" style="width: 81%;"></div>
+                        <div class="progress-fill-circular" style="width: 5%;"></div>
                     </div>
-                    <div class="progress-text">$810 BALANCE // 81% TO GOAL // CLAWDBOT RENEWAL AT STAKE</div>
+                    <div class="progress-text">$0 CLOSED // 43+ LEADS GENERATED // OUTREACH ACTIVE</div>
                 </div>
             </div>
         </section>
         
         <!-- Data Constellation -->
         <div class="data-constellation">
-            <!-- Active Projects -->
+            <!-- 🔥 HOT LEADS -->
             <div class="data-node fade-in">
                 <div class="node-header">
-                    <div class="node-icon trading">🔥</div>
-                    <div class="node-title"><span>ACTIVE</span> PROJECTS</div>
+                    <div class="node-icon urgent">🔥</div>
+                    <div class="node-title"><span>HOT</span> LEADS</div>
                 </div>
                 <div class="node-content">
                     <div class="project-pod">
-                        <div class="pod-icon trading">📈</div>
+                        <div class="pod-icon urgent">📞</div>
                         <div class="pod-details">
-                            <div class="pod-name">Hyperliquid Trader</div>
-                            <div class="pod-status">HIP-3 Support Added — 50+ new perps (PID 3376)</div>
+                            <div class="pod-name">REAPS (Puget Sound)</div>
+                            <div class="pod-status">Deal Analysis Workshop • Feb 20-25</div>
                         </div>
-                        <span class="pod-badge live">LIVE</span>
+                        <span class="pod-badge hot">SCHEDULE</span>
                     </div>
                     <div class="project-pod">
-                        <div class="pod-icon agency">🏢</div>
+                        <div class="pod-icon client">📧</div>
                         <div class="pod-details">
-                            <div class="pod-name">AI Automation Agency</div>
-                            <div class="pod-status">Building lead gen + audit tools tonight</div>
+                            <div class="pod-name">43+ Leads Generated</div>
+                            <div class="pod-status">Home services, Real Estate, Solar</div>
                         </div>
-                        <span class="pod-badge active">ACTIVE</span>
+                        <span class="pod-badge active">OUTREACH</span>
                     </div>
                     <div class="project-pod">
-                        <div class="pod-icon quinn">🦊</div>
+                        <div class="pod-icon agency">💼</div>
                         <div class="pod-details">
-                            <div class="pod-name">Quinn / Clawdbot</div>
-                            <div class="pod-status">Active - overnight work running</div>
+                            <div class="pod-name">A4 Accounting</div>
+                            <div class="pod-status">Proposal sent • Waiting response</div>
                         </div>
-                        <span class="pod-badge active">ACTIVE</span>
-                    </div>
-                    <div class="project-pod">
-                        <div class="pod-icon client">📋</div>
-                        <div class="pod-details">
-                            <div class="pod-name">A4 Accounting Proposal</div>
-                            <div class="pod-status">SENT - new client prospect</div>
-                        </div>
-                        <span class="pod-badge active">SENT</span>
+                        <span class="pod-badge paused">PENDING</span>
                     </div>
                 </div>
             </div>
@@ -1220,44 +963,66 @@
                     <div class="focus-task">
                         <div class="task-orb high"></div>
                         <div>
-                            <div class="task-text">🚨 HIT $1K BY TOMORROW — Clawdbot renewal at stake</div>
-                            <div class="task-meta">DEADLINE TOMORROW • Trader running (PID 21600)</div>
+                            <div class="task-text">🔧 Fix Google Calendar auth (token expired)</div>
+                            <div class="task-meta">node scripts/gcal.js needs re-auth</div>
                         </div>
                     </div>
                     <div class="focus-task">
-                        <div class="task-orb done"></div>
+                        <div class="task-orb high"></div>
                         <div>
-                            <div class="task-text done">✅ 20 B2B leads generated with emails</div>
-                            <div class="task-meta">leads/2026-01-30-leads.csv • Agencies + Real Estate</div>
-                        </div>
-                    </div>
-                    <div class="focus-task">
-                        <div class="task-orb done"></div>
-                        <div>
-                            <div class="task-text done">✅ Lead qualifier tool built</div>
-                            <div class="task-meta">scripts/qualify-lead.js • ICP scoring</div>
-                        </div>
-                    </div>
-                    <div class="focus-task">
-                        <div class="task-orb done"></div>
-                        <div>
-                            <div class="task-text done">✅ Cold email A/B test variants created</div>
-                            <div class="task-meta">business/clawdbot-service/EMAIL_AB_TESTS.md</div>
-                        </div>
-                    </div>
-                    <div class="focus-task">
-                        <div class="task-orb done"></div>
-                        <div>
-                            <div class="task-text done">✅ Dashboard v2 ready (branch preserved)</div>
-                            <div class="task-meta">dashboard-v2-improvements • New scoring system</div>
+                            <div class="task-text">📧 Day 3 follow-ups to 40+ contacts</div>
+                            <div class="task-meta">Cold outreach sequence continuing</div>
                         </div>
                     </div>
                     <div class="focus-task">
                         <div class="task-orb med"></div>
                         <div>
-                            <div class="task-text">📞 John Smith call — Monday 10:30 AM MT</div>
-                            <div class="task-meta">123 Plumbing • Intro call booked by Quinn</div>
+                            <div class="task-text">📈 Check Hyperliquid trader status</div>
+                            <div class="task-meta">CLI not responding • Watchdog may need restart</div>
                         </div>
+                    </div>
+                    <div class="focus-task">
+                        <div class="task-orb low"></div>
+                        <div>
+                            <div class="task-text">💝 Valentine's prep (Saturday!)</div>
+                            <div class="task-meta">Copper Canyon 6:30 PM • CONFIRMED</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Outreach Stats -->
+            <div class="data-node fade-in">
+                <div class="node-header">
+                    <div class="node-icon agency">📊</div>
+                    <div class="node-title"><span>OUTREACH</span> METRICS</div>
+                </div>
+                <div class="node-content">
+                    <div class="lead-stat">
+                        <span class="lead-label">Leads Generated (Feb 6-7)</span>
+                        <span class="lead-value good">43+</span>
+                    </div>
+                    <div class="lead-stat">
+                        <span class="lead-label">Emails Sent</span>
+                        <span class="lead-value good">~60</span>
+                    </div>
+                    <div class="lead-stat">
+                        <span class="lead-label">Bounces (removed)</span>
+                        <span class="lead-value bad">29</span>
+                    </div>
+                    <div class="lead-stat">
+                        <span class="lead-label">Replies</span>
+                        <span class="lead-value warn">1</span>
+                    </div>
+                    <div class="lead-stat">
+                        <span class="lead-label">Meetings Booked</span>
+                        <span class="lead-value warn">0</span>
+                    </div>
+                    <div class="trading-alert">
+                        <span class="alert-label">📋 LEAD FILES:</span><br>
+                        • data/night-shift-leads-feb6.json<br>
+                        • data/cold-emails-feb6.md<br>
+                        • memory/overnight-work.md
                     </div>
                 </div>
             </div>
@@ -1266,30 +1031,92 @@
             <div class="data-node fade-in">
                 <div class="node-header">
                     <div class="node-icon trading">📈</div>
-                    <div class="node-title"><span>LIVE</span> TRADING</div>
+                    <div class="node-title"><span>TRADING</span> STATUS</div>
                 </div>
                 <div class="node-content">
                     <div class="stat-matrix">
                         <div class="stat-cell">
-                            <div class="stat-value positive">$810</div>
+                            <div class="stat-value warning">$796</div>
                             <div class="stat-label">Account Value</div>
                         </div>
                         <div class="stat-cell">
-                            <div class="stat-value negative">-$190</div>
-                            <div class="stat-label">Gap to $1K Goal</div>
+                            <div class="stat-value negative">-$124</div>
+                            <div class="stat-label">From Start ($920)</div>
                         </div>
                         <div class="stat-cell">
-                            <div class="stat-value neutral">0</div>
-                            <div class="stat-label">Open Positions</div>
+                            <div class="stat-value neutral">2</div>
+                            <div class="stat-label">Active Traders</div>
                         </div>
                         <div class="stat-cell">
-                            <div class="stat-value negative">1</div>
-                            <div class="stat-label">Day Left ⚠️</div>
+                            <div class="stat-value warning">⚠️</div>
+                            <div class="stat-label">CLI Issue</div>
                         </div>
                     </div>
                     <div class="trading-alert">
-                        <span class="alert-label">🚨 FINAL DAY:</span> $190 away from $1,000 goal — DEADLINE TOMORROW<br>
-                        <span class="alert-label">📊 POSITION:</span> No open positions — trader monitoring for setups
+                        <span class="alert-label">📊 TRADERS:</span> full_trader.py + copy_trader.py<br>
+                        <span class="alert-label">🔧 WATCHDOG:</span> Scheduled task every 5 mins<br>
+                        <span class="alert-label">⚠️ STATUS:</span> CLI not responding — check logs
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Active Projects -->
+            <div class="data-node fade-in">
+                <div class="node-header">
+                    <div class="node-icon quinn">🦊</div>
+                    <div class="node-title"><span>ACTIVE</span> PROJECTS</div>
+                </div>
+                <div class="node-content">
+                    <div class="project-pod">
+                        <div class="pod-icon agency">🏢</div>
+                        <div class="pod-details">
+                            <div class="pod-name">AI Automation Agency</div>
+                            <div class="pod-status">skps.agency • Cold outreach active</div>
+                        </div>
+                        <span class="pod-badge urgent">PRIORITY</span>
+                    </div>
+                    <div class="project-pod">
+                        <div class="pod-icon quinn">🤖</div>
+                        <div class="pod-details">
+                            <div class="pod-name">Quinn / Clawdbot</div>
+                            <div class="pod-status">Running 24/7 • Heartbeats active</div>
+                        </div>
+                        <span class="pod-badge live">LIVE</span>
+                    </div>
+                    <div class="project-pod">
+                        <div class="pod-icon trading">📈</div>
+                        <div class="pod-details">
+                            <div class="pod-name">Hyperliquid Trader</div>
+                            <div class="pod-status">Watchdog running • Needs status check</div>
+                        </div>
+                        <span class="pod-badge active">RUNNING</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Personal Events -->
+            <div class="data-node fade-in">
+                <div class="node-header">
+                    <div class="node-icon personal">💝</div>
+                    <div class="node-title"><span>UPCOMING</span> EVENTS</div>
+                </div>
+                <div class="node-content">
+                    <div class="event-timeline">
+                        <div class="event-node urgent">
+                            <div class="event-date">FEB 14 • SAT • 6:30 PM ❤️</div>
+                            <div class="event-title">Valentine's Dinner</div>
+                            <div class="event-details">Copper Canyon Grillhouse<br>$69/person • 2 people • CONFIRMED</div>
+                        </div>
+                        <div class="event-node">
+                            <div class="event-date">FEB 20-25</div>
+                            <div class="event-title">REAPS Workshop (TBD)</div>
+                            <div class="event-details">Deal Analysis • Need to schedule</div>
+                        </div>
+                        <div class="event-node">
+                            <div class="event-date">~MAY 2026</div>
+                            <div class="event-title">Runway End ⚠️</div>
+                            <div class="event-details">~3 months from job loss</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1302,57 +1129,41 @@
                 </div>
                 <div class="node-content">
                     <div class="idea-fragment">
-                        <div class="idea-icon">📝</div>
-                        <div class="idea-content">
-                            <div class="idea-title">Lead Qualifier Tool</div>
-                            <div class="idea-desc">CLI tool to score leads against ICP</div>
-                        </div>
-                        <span class="idea-cost">DONE ✅</span>
-                    </div>
-                    <div class="idea-fragment">
-                        <div class="idea-icon">📧</div>
-                        <div class="idea-content">
-                            <div class="idea-title">Cold Email A/B Tests</div>
-                            <div class="idea-desc">Subject lines + body variants for outreach</div>
-                        </div>
-                        <span class="idea-cost">DONE ✅</span>
-                    </div>
-                    <div class="idea-fragment">
-                        <div class="idea-icon">📊</div>
-                        <div class="idea-content">
-                            <div class="idea-title">Hormozi Offer Breakdown</div>
-                            <div class="idea-desc">Grand Slam Offer strategy for Clawdbot</div>
-                        </div>
-                        <span class="idea-cost">DONE ✅</span>
-                    </div>
-                    <div class="idea-fragment">
-                        <div class="idea-icon">📞</div>
-                        <div class="idea-content">
-                            <div class="idea-title">Cold Call Script</div>
-                            <div class="idea-desc">Full script with objection handlers</div>
-                        </div>
-                        <span class="idea-cost">DONE ✅</span>
-                    </div>
-                    <div class="idea-fragment">
                         <div class="idea-icon">🤖</div>
                         <div class="idea-content">
                             <div class="idea-title">AI Meeting Clone (Tavus)</div>
-                            <div class="idea-desc">Quinn avatar joins Zoom calls autonomously</div>
+                            <div class="idea-desc">Quinn avatar joins Zoom calls</div>
                         </div>
                         <span class="idea-cost">~$60/mo</span>
                     </div>
                     <div class="idea-fragment">
                         <div class="idea-icon">🏠</div>
                         <div class="idea-content">
-                            <div class="idea-title">Wholesale Real Estate Deals</div>
-                            <div class="idea-desc">Restart with Terrasol, get back in the game</div>
+                            <div class="idea-title">Wholesale Real Estate</div>
+                            <div class="idea-desc">Restart with Terrasol</div>
                         </div>
-                        <span class="idea-cost">TBD</span>
+                        <span class="idea-cost">SHELVED</span>
+                    </div>
+                    <div class="idea-fragment">
+                        <div class="idea-icon">🦊</div>
+                        <div class="idea-content">
+                            <div class="idea-title">Quinn Physical Shrine</div>
+                            <div class="idea-desc">RPi + screen + camera</div>
+                        </div>
+                        <span class="idea-cost">~$150</span>
+                    </div>
+                    <div class="idea-fragment">
+                        <div class="idea-icon">🌾</div>
+                        <div class="idea-content">
+                            <div class="idea-title">The Compound</div>
+                            <div class="idea-desc">Land hacking / automated farming</div>
+                        </div>
+                        <span class="idea-cost">LONG-TERM</span>
                     </div>
                 </div>
             </div>
             
-            <!-- People -->
+            <!-- Network -->
             <div class="data-node fade-in">
                 <div class="node-header">
                     <div class="node-icon people">👥</div>
@@ -1369,273 +1180,98 @@
                     <div class="person-entity">
                         <div class="person-avatar"><span>J</span></div>
                         <div>
-                            <div class="person-name">Jenna</div>
-                            <div class="person-role">Ahsan's AI • Dext integration</div>
+                            <div class="person-name">Jake (JVC Equity)</div>
+                            <div class="person-role">Friend • Bobby is his AI</div>
                         </div>
                     </div>
                     <div class="person-entity">
                         <div class="person-avatar"><span>💕</span></div>
                         <div>
                             <div class="person-name">Girlfriend</div>
-                            <div class="person-role">Valentine's booked ❤️</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Personal -->
-            <div class="data-node fade-in">
-                <div class="node-header">
-                    <div class="node-icon personal">💝</div>
-                    <div class="node-title"><span>PERSONAL</span> EVENTS</div>
-                </div>
-                <div class="node-content">
-                    <div class="event-timeline">
-                        <div class="event-node">
-                            <div class="event-date">FEB 1 • 10:30 MT</div>
-                            <div class="event-title">John Smith — 123 Plumbing</div>
-                            <div class="event-details">Intro call • Booked by Quinn</div>
-                        </div>
-                        <div class="event-node">
-                            <div class="event-date">FEB 14 • 18:30</div>
-                            <div class="event-title">Valentine's Dinner</div>
-                            <div class="event-details">Copper Canyon Grillhouse<br>$69/person • CONFIRMED</div>
-                        </div>
-                        <div class="event-node">
-                            <div class="event-date">LOCATION</div>
-                            <div class="event-title">Salt Lake City, UT</div>
-                            <div class="event-details">America/Chicago timezone</div>
+                            <div class="person-role">Valentine's in 3 days! ❤️</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Roadmap Tunnel -->
+        <!-- Roadmap -->
         <section class="roadmap-tunnel fade-in">
             <div class="tunnel-header">🗺️ MISSION ROADMAP</div>
             <div class="timeline-track">
                 <div class="timeline-phase now">
                     <div class="phase-header now">
                         <div class="phase-dot"></div>
-                        <div class="phase-title">NOW</div>
+                        <div class="phase-title">THIS WEEK</div>
                     </div>
                     <div class="phase-item">
-                        <div class="phase-tag">AGENCY</div>
-                        <div class="phase-text">Lead list generator for SLC real estate</div>
+                        <div class="phase-tag">SURVIVAL</div>
+                        <div class="phase-text">Fix calendar auth</div>
                     </div>
                     <div class="phase-item">
-                        <div class="phase-tag">AGENCY</div>
-                        <div class="phase-text">Audit tool with SKPS branding</div>
+                        <div class="phase-tag">OUTREACH</div>
+                        <div class="phase-text">Day 3/7 follow-ups</div>
                     </div>
                     <div class="phase-item">
                         <div class="phase-tag">CLIENT</div>
-                        <div class="phase-text">A4 Accounting follow-up</div>
+                        <div class="phase-text">Schedule REAPS workshop</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">PERSONAL</div>
+                        <div class="phase-text">Valentine's dinner ❤️</div>
                     </div>
                 </div>
                 <div class="timeline-phase soon">
                     <div class="phase-header soon">
                         <div class="phase-dot"></div>
-                        <div class="phase-title">SOON</div>
-                    </div>
-                    <div class="phase-item">
-                        <div class="phase-tag">TRADING</div>
-                        <div class="phase-text">Backtest trend filter</div>
+                        <div class="phase-title">THIS MONTH</div>
                     </div>
                     <div class="phase-item">
                         <div class="phase-tag">AGENCY</div>
-                        <div class="phase-text">Build outreach system</div>
-                    </div>
-                    <div class="phase-item">
-                        <div class="phase-tag">CLIENT</div>
-                        <div class="phase-text">Dashboard v2 iteration</div>
+                        <div class="phase-text">Close first paying client</div>
                     </div>
                     <div class="phase-item">
                         <div class="phase-tag">AGENCY</div>
-                        <div class="phase-text">Dext integration research</div>
-                    </div>
-                </div>
-                <div class="timeline-phase later">
-                    <div class="phase-header later">
-                        <div class="phase-dot"></div>
-                        <div class="phase-title">LATER</div>
+                        <div class="phase-text">$5K revenue milestone</div>
                     </div>
                     <div class="phase-item">
                         <div class="phase-tag">TRADING</div>
                         <div class="phase-text">Recover to $1,000+</div>
                     </div>
                     <div class="phase-item">
+                        <div class="phase-tag">CLIENT</div>
+                        <div class="phase-text">REAPS workshop delivery</div>
+                    </div>
+                </div>
+                <div class="timeline-phase later">
+                    <div class="phase-header later">
+                        <div class="phase-dot"></div>
+                        <div class="phase-title">Q1-Q2 2026</div>
+                    </div>
+                    <div class="phase-item">
                         <div class="phase-tag">AGENCY</div>
-                        <div class="phase-text">Close $5k revenue</div>
+                        <div class="phase-text">$20K/mo recurring</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">TRADING</div>
+                        <div class="phase-text">Passive income stream</div>
+                    </div>
+                    <div class="phase-item">
+                        <div class="phase-tag">LAND</div>
+                        <div class="phase-text">Start compound planning</div>
                     </div>
                     <div class="phase-item">
                         <div class="phase-tag">QUINN</div>
-                        <div class="phase-text">Physical shrine build</div>
-                    </div>
-                    <div class="phase-item">
-                        <div class="phase-tag">CLIENT</div>
-                        <div class="phase-text">AI sales call grader</div>
+                        <div class="phase-text">Physical embodiment</div>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <!-- All Projects Matrix -->
-        <section class="projects-matrix fade-in">
-            <div class="matrix-header">📁 ALL SYSTEMS // DISCOVERED ON DISK</div>
-            <div class="matrix-grid">
-                <div class="matrix-cell">
-                    <div class="cell-name"><span class="cell-status active"></span>hyperliquid-telegram-agent</div>
-                    <div class="cell-path">Crypto trading bot</div>
-                </div>
-                <div class="matrix-cell">
-                    <div class="cell-name"><span class="cell-status active"></span>clawd</div>
-                    <div class="cell-path">Quinn's home base</div>
-                </div>
-                <div class="matrix-cell">
-                    <div class="cell-name"><span class="cell-status active"></span>clawd-democratized</div>
-                    <div class="cell-path">Open source Clawdbot</div>
-                </div>
-                <div class="matrix-cell">
-                    <div class="cell-name"><span class="cell-status dormant"></span>Solana DeFi Bot</div>
-                    <div class="cell-path">Crypto project</div>
-                </div>
-                <div class="matrix-cell">
-                    <div class="cell-name"><span class="cell-status dormant"></span>solar-prospector</div>
-                    <div class="cell-path">Solar energy tool</div>
-                </div>
-                <div class="matrix-cell">
-                    <div class="cell-name"><span class="cell-status dormant"></span>Solar Identifier</div>
-                    <div class="cell-path">Solar panel ID</div>
-                </div>
-                <div class="matrix-cell">
-                    <div class="cell-name"><span class="cell-status dormant"></span>earth-journey-portfolio</div>
-                    <div class="cell-path">Creative portfolio</div>
-                </div>
-                <div class="matrix-cell">
-                    <div class="cell-name"><span class="cell-status dormant"></span>Nulead Dashboard</div>
-                    <div class="cell-path">Client work</div>
-                </div>
-                <div class="matrix-cell">
-                    <div class="cell-name"><span class="cell-status dormant"></span>Cost Curve Engine</div>
-                    <div class="cell-path">Energy analysis</div>
-                </div>
-                <div class="matrix-cell">
-                    <div class="cell-name"><span class="cell-status dormant"></span>Xendee Clone</div>
-                    <div class="cell-path">Energy platform</div>
-                </div>
-                <div class="matrix-cell">
-                    <div class="cell-name"><span class="cell-status dormant"></span>indian-wedding-photographer</div>
-                    <div class="cell-path">Client site</div>
-                </div>
-                <div class="matrix-cell">
-                    <div class="cell-name"><span class="cell-status dormant"></span>bayhaven-redesign</div>
-                    <div class="cell-path">Client site</div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Completed Tasks Archive -->
-        <section class="completed-archive fade-in">
-            <div class="archive-header">🏆 MISSION ACCOMPLISHED // COMPLETED TASKS LOG</div>
-            <div class="archive-table-container">
-                <table class="archive-table">
-                    <thead>
-                        <tr>
-                            <th>DATE</th>
-                            <th>TASK</th>
-                            <th>CATEGORY</th>
-                            <th>NOTES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="date-cell">2026-01-30</td>
-                            <td>Gmail credentials check + brain.html archive feature</td>
-                            <td><span class="cat-badge quinn">QUINN</span></td>
-                            <td>Added completed tasks table to track our wins</td>
-                        </tr>
-                        <tr>
-                            <td class="date-cell">2026-01-30</td>
-                            <td>20 B2B leads with emails generated</td>
-                            <td><span class="cat-badge agency">AGENCY</span></td>
-                            <td>leads/2026-01-30-leads.csv • Agencies + Real Estate</td>
-                        </tr>
-                        <tr>
-                            <td class="date-cell">2026-01-30</td>
-                            <td>Lead qualifier tool built</td>
-                            <td><span class="cat-badge agency">AGENCY</span></td>
-                            <td>scripts/qualify-lead.js • ICP scoring system</td>
-                        </tr>
-                        <tr>
-                            <td class="date-cell">2026-01-30</td>
-                            <td>Cold email A/B test variants</td>
-                            <td><span class="cat-badge agency">AGENCY</span></td>
-                            <td>business/clawdbot-service/EMAIL_AB_TESTS.md</td>
-                        </tr>
-                        <tr>
-                            <td class="date-cell">2026-01-30</td>
-                            <td>Dashboard v2 improvements</td>
-                            <td><span class="cat-badge client">CLIENT</span></td>
-                            <td>dashboard-v2-improvements branch • New scoring</td>
-                        </tr>
-                        <tr>
-                            <td class="date-cell">2026-01-29</td>
-                            <td>John Smith call booked by Quinn</td>
-                            <td><span class="cat-badge quinn">QUINN</span></td>
-                            <td>123 Plumbing • Feb 1 @ 10:30 AM MT</td>
-                        </tr>
-                        <tr>
-                            <td class="date-cell">2026-01-29</td>
-                            <td>Hormozi Offer Breakdown</td>
-                            <td><span class="cat-badge agency">AGENCY</span></td>
-                            <td>Grand Slam Offer strategy for Clawdbot service</td>
-                        </tr>
-                        <tr>
-                            <td class="date-cell">2026-01-29</td>
-                            <td>Cold Call Script created</td>
-                            <td><span class="cat-badge agency">AGENCY</span></td>
-                            <td>Full script with objection handlers</td>
-                        </tr>
-                        <tr>
-                            <td class="date-cell">2026-01-28</td>
-                            <td>A4 Accounting proposal sent</td>
-                            <td><span class="cat-badge client">CLIENT</span></td>
-                            <td>New client prospect • Waiting response</td>
-                        </tr>
-                        <tr>
-                            <td class="date-cell">2026-01-27</td>
-                            <td>HIP-3 Support for Hyperliquid</td>
-                            <td><span class="cat-badge trading">TRADING</span></td>
-                            <td>50+ new perps added to trader</td>
-                        </tr>
-                        <tr>
-                            <td class="date-cell">2026-01-26</td>
-                            <td>Quinn Voice Assistant Live</td>
-                            <td><span class="cat-badge quinn">QUINN</span></td>
-                            <td>Vapi phone line • Calendar booking works</td>
-                        </tr>
-                        <tr>
-                            <td class="date-cell">2026-01-25</td>
-                            <td>brain.html v2 Neural Core</td>
-                            <td><span class="cat-badge quinn">QUINN</span></td>
-                            <td>Cyberpunk dashboard redesign</td>
-                        </tr>
-                        <tr>
-                            <td class="date-cell">2026-01-14</td>
-                            <td>Valentine's reservation booked</td>
-                            <td><span class="cat-badge personal">PERSONAL</span></td>
-                            <td>Copper Canyon Grillhouse • Feb 14 @ 6:30 PM</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </section>
         
         <!-- Footer -->
         <footer class="footer-deco">
             <span>◈</span> QUINN NEURAL INTERFACE <span>◈</span><br>
-            UPDATED: JAN 30, 2026 06:48 PM CST
+            UPDATED: FEB 11, 2026 11:35 AM CST
         </footer>
     </div>
     
@@ -1657,7 +1293,7 @@
         // ===== FLOATING PARTICLES =====
         function createParticles() {
             const container = document.getElementById('particles');
-            const colors = ['#00f5ff', '#ff00ff', '#00ff88', '#b347d9'];
+            const colors = ['#00f5ff', '#ff00ff', '#00ff88', '#b347d9', '#ff4444'];
             
             for (let i = 0; i < 30; i++) {
                 const particle = document.createElement('div');
@@ -1677,7 +1313,6 @@
         const ctx = canvas.getContext('2d');
         let width, height;
         let nodes = [];
-        let connections = [];
         
         function resizeCanvas() {
             width = canvas.width = window.innerWidth;
@@ -1691,13 +1326,12 @@
                 this.vx = (Math.random() - 0.5) * 0.5;
                 this.vy = (Math.random() - 0.5) * 0.5;
                 this.radius = Math.random() * 2 + 1;
-                this.color = ['#00f5ff', '#ff00ff', '#00ff88', '#b347d9'][Math.floor(Math.random() * 4)];
+                this.color = ['#00f5ff', '#ff00ff', '#00ff88', '#b347d9', '#ff4444'][Math.floor(Math.random() * 5)];
             }
             
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
             }
@@ -1723,7 +1357,6 @@
         function drawNeuralNet() {
             ctx.clearRect(0, 0, width, height);
             
-            // Draw connections
             for (let i = 0; i < nodes.length; i++) {
                 for (let j = i + 1; j < nodes.length; j++) {
                     const dx = nodes[i].x - nodes[j].x;
@@ -1741,7 +1374,6 @@
                 }
             }
             
-            // Update and draw nodes
             nodes.forEach(node => {
                 node.update();
                 node.draw();
@@ -1759,31 +1391,15 @@
         });
         
         // ===== SCROLL ANIMATIONS =====
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
         
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        
-        // ===== MOUSE PARALLAX =====
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 20;
-            const y = (e.clientY / window.innerHeight - 0.5) * 20;
-            
-            document.querySelectorAll('.data-node').forEach((node, index) => {
-                const factor = (index + 1) * 0.5;
-                node.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
-            });
-        });
         
         // ===== 3D TILT ON CARDS =====
         document.querySelectorAll('.data-node').forEach(card => {
@@ -1795,37 +1411,11 @@
                 const centerY = rect.height / 2;
                 const rotateX = (y - centerY) / 20;
                 const rotateY = (centerX - x) / 20;
-                
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
             });
             
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-            });
-        });
-        
-        // ===== TASK CHECKBOX INTERACTION =====
-        document.querySelectorAll('.task-orb').forEach(orb => {
-            orb.addEventListener('click', () => {
-                orb.classList.toggle('done');
-                const text = orb.nextElementSibling.querySelector('.task-text');
-                text.classList.toggle('done');
-            });
-        });
-        
-        // ===== PROJECT POD INTERACTIONS =====
-        document.querySelectorAll('.project-pod').forEach(pod => {
-            pod.addEventListener('click', () => {
-                pod.style.animation = 'none';
-                pod.offsetHeight; // Trigger reflow
-                pod.style.animation = 'glitch 0.3s';
-            });
-        });
-        
-        // ===== MATRIX CELL HOVER SOUND EFFECT (Visual only) =====
-        document.querySelectorAll('.matrix-cell').forEach(cell => {
-            cell.addEventListener('mouseenter', () => {
-                cell.style.borderColor = '#00f5ff';
             });
         });
     </script>
