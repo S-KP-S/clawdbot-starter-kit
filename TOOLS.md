@@ -61,6 +61,21 @@ hl trade cancel-all -y
 hl asset price HYPE --json
 ```
 
+### ⚠️ STOP ORDERS - CRITICAL
+**The CLI does NOT have a stop order command.** Limit orders ≠ stop-losses!
+
+| Order Type | What It Does | Danger |
+|------------|--------------|--------|
+| Limit Sell @ $X | Sells at $X OR HIGHER | If market > $X, fills IMMEDIATELY |
+| Stop-Loss @ $X | Triggers sell WHEN price drops to $X | Needs API with trigger condition |
+
+**NEVER place a limit sell below current market price thinking it will "protect" you.** It will fill instantly at market.
+
+**To set actual stop-losses on Hyperliquid:**
+- Use the web UI (easiest)
+- Use Python SDK with `order_types.trigger` (TP/SL triggers)
+- The CLI limit orders are NOT stop orders
+
 ### PowerShell Note
 Env vars need to be set in session (or use User env vars already configured):
 ```powershell

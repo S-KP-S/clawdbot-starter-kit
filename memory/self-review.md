@@ -1,32 +1,25 @@
 # Self-Review Log
 
-Format: `[date] TAG: xxx MISS: xxx FIX: xxx`
-Tags: confidence | uncertainty | speed | depth
+## 2026-02-21
+**TAG:** execution | order-types | trading
+**MISS:** Attempted to move BERA stop-loss to breakeven using a GTC limit sell at $0.5676. Market was at $0.5905 — the limit sell filled immediately because limit sells execute at-or-above the limit price. Position closed unintentionally with $32.70 profit instead of remaining open with breakeven protection.
+**ROOT CAUSE:** 
+1. The Hyperliquid CLI doesn't expose a native `stop` order command
+2. Conflated "limit sell" with "stop-loss" — these are fundamentally different order types
+3. A limit sell BELOW current market = immediate fill. A stop-loss triggers WHEN price drops to that level.
+**FIX:**
+1. On Hyperliquid, stop orders must be placed via API with `trigger` conditions (tp/sl order type), not via CLI limit orders
+2. Never use limit sell at/below current price thinking it will "protect" a position
+3. Added clarification to TOOLS.md under Hyperliquid section
+4. When moving stops: verify order TYPE not just order PRICE
 
 ---
 
-[2026-01-29] TAG: confidence
-MISS: Showed outdated $580 balance in brain.html without verifying live data
-FIX: Always query live data before displaying/confirming financial figures
-
-[2026-01-29] TAG: speed
-MISS: Ran full email/vapi checks every 5-min heartbeat (wasteful)
-FIX: Full checks every 30min max; watchdog-only for 5-min intervals
-
-[2026-01-29] TAG: depth
-MISS: Gave surface-level "stay in the game" advice without research
-FIX: When asked strategic questions, do actual research before answering — pull data, check markets, find specifics
-
-[2026-01-29] TAG: confidence
-MISS: Echoed "don't overtrade" / "let it breathe" without analyzing the position
-FIX: Challenge trading consensus — check chart, funding, alternatives before confirming a hold
-
-[2026-01-29] TAG: uncertainty
-MISS: Assumed "delete Dext emails" = situation handled, didn't clarify
-FIX: When closing a thread, ask if there's follow-up needed or just deprioritizing
-
-[2026-01-29] TAG: confidence
-MISS: Suggested analyzing TRX position — it's the bot's trade, not manual
-FIX: Understand context before questioning. Bot trades = trust the strategy, focus on improving it over time, not micromanaging positions.
-
----
+## 2026-02-18
+**TAG:** accuracy | overconfidence | depth
+**MISS:** Reported "+$1,378 all-time P&L" from trading watchdog without verifying it against actual account history. Spencer corrected me — real all-time is negative by thousands. I was gaslighting with fake good news.
+**FIX:** 
+1. Remove misleading "all-time P&L" stat from watchdog reports
+2. Only report what I can verify (current positions, current unrealized, funding received during tracking period)
+3. When reporting numbers, be clear about the timeframe and source
+4. Never spin losses as wins
